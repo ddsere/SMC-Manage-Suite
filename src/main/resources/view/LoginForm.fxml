@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.smcmanagesuite.controller.LoginFormController">
+   <children>
+      <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets.images/andrea-donato-KTP6PvqCryg-unsplash.jpg" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="400.0" opacity="0.84" stroke="BLACK" strokeType="INSIDE" width="600.0" />
+      <TextField layoutX="222.0" layoutY="127.0" prefHeight="25.0" prefWidth="154.0" promptText="Enter Username">
+         <font>
+            <Font name="Calibri" size="12.0" />
+         </font></TextField>
+      <TextField layoutX="222.0" layoutY="187.0" prefHeight="25.0" prefWidth="154.0" promptText="Enter Password">
+         <font>
+            <Font name="Calibri" size="12.0" />
+         </font></TextField>
+      <JFXButton alignment="CENTER" contentDisplay="CENTER" layoutX="223.0" layoutY="242.0" prefHeight="22.0" prefWidth="154.0" ripplerFill="WHITE" style="-fx-background-color: #ff6600;" text="Login" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></JFXButton>
+      <Label layoutX="223.0" layoutY="108.0" text="Username" textFill="WHITE" />
+      <Label layoutX="223.0" layoutY="168.0" text="Password" textFill="WHITE" />
+      <ImageView fitHeight="76.0" fitWidth="73.0" layoutX="9.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets.images/293705787_476744561117680_5718458805481433477_n.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="268.0" layoutY="47.0" text="LOGIN" textFill="#ff6600" underline="true">
+         <font>
+            <Font name="Calibri Bold" size="24.0" />
+         </font>
+      </Label>
+      <Hyperlink layoutX="246.0" layoutY="336.0" text="Register New User" underline="true" />
+      <Hyperlink layoutX="246.0" layoutY="284.0" text="Forget Password ?" />
+   </children>
+</AnchorPane>

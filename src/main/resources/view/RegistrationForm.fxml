@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.smcmanagesuite.controller.RegistrationFormController">
+   <children>
+      <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets.images/andrea-donato-KTP6PvqCryg-unsplash.jpg" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="400.0" opacity="0.84" stroke="BLACK" strokeType="INSIDE" width="600.0" />
+      <ImageView fitHeight="76.0" fitWidth="73.0" layoutX="9.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets.images/293705787_476744561117680_5718458805481433477_n.png" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="70.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WELCOME TO" textAlignment="CENTER" wrappingWidth="191.0">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font></Text>
+      <Text fill="#ff0101" layoutX="41.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SMC MANAGE SUITE" textAlignment="CENTER" wrappingWidth="247.4176025390625">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtUserId" layoutX="389.0" layoutY="134.0" prefHeight="25.0" prefWidth="154.0" promptText="Enter User ID">
+         <font>
+            <Font name="Calibri" size="12.0" />
+         </font></TextField>
+      <Label layoutX="389.0" layoutY="115.0" text="User ID" textFill="WHITE" />
+      <TextField fx:id="txtUserName" layoutX="390.0" layoutY="190.0" prefHeight="25.0" prefWidth="154.0" promptText="Enter Your Name">
+         <font>
+            <Font name="Calibri" size="12.0" />
+         </font></TextField>
+      <Label layoutX="390.0" layoutY="171.0" prefHeight="18.0" prefWidth="39.0" text="Name" textFill="WHITE" />
+      <TextField fx:id="txtPassword" layoutX="390.0" layoutY="248.0" prefHeight="25.0" prefWidth="154.0" promptText="Enter Your Password">
+         <font>
+            <Font name="Calibri" size="12.0" />
+         </font></TextField>
+      <Label layoutX="390.0" layoutY="229.0" text="Password" textFill="WHITE" />
+      <JFXButton layoutX="390.0" layoutY="305.0" onAction="#btnRegisterOnAction" prefHeight="26.0" prefWidth="154.0" style="-fx-background-color: #ff6600;" text="Register" textFill="WHITE">
+         <font>
+            <Font name="Calibri Bold" size="12.0" />
+         </font>
+      </JFXButton>
+      <Label layoutX="428.0" layoutY="63.0" prefHeight="28.0" prefWidth="76.0" text="REGISTER" textFill="#ff6600" underline="true">
+         <font>
+            <Font name="Calibri Bold" size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
