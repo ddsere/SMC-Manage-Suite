@@ -17,7 +17,7 @@
             <Image url="@../assets.images/andrea-donato-KTP6PvqCryg-unsplash.jpg" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="400.0" opacity="0.84" stroke="BLACK" strokeType="INSIDE" width="600.0" />
+      <Rectangle fx:id="rootNode" arcHeight="5.0" arcWidth="5.0" height="400.0" opacity="0.84" stroke="BLACK" strokeType="INSIDE" width="600.0" />
       <ImageView fitHeight="76.0" fitWidth="73.0" layoutX="9.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets.images/293705787_476744561117680_5718458805481433477_n.png" />

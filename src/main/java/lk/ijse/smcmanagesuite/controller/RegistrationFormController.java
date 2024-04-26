@@ -32,12 +32,12 @@ public class RegistrationFormController {
 
     private void saveUser(String userId, String name, String password) {
         try{
-            String sql ="INSERT INTO users VALUES(?,?,?)";
+            String sql ="INSERT INTO Users VALUES(?,?,?)";
             Connection connection = DbConnection.getInstance().getConnection();
             PreparedStatement pstm =connection.prepareStatement(sql);
             pstm.setObject(1, userId);
             pstm.setObject(2, name);
-            pstm.setObject(1, password);
+            pstm.setObject(3, password);
 
             if (pstm.executeUpdate()>0){
                 new Alert(Alert.AlertType.CONFIRMATION, "User Saved!").show();
