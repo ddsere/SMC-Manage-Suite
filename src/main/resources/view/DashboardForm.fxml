@@ -2,8 +2,8 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.ColorAdjust?>
-<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -12,13 +12,13 @@
 
 <AnchorPane fx:id="rootNode" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.smcmanagesuite.controller.DashboardController">
    <children>
-      <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true">
          <image>
-            <Image url="@../assets.images/26254.jpg" />
+            <Image url="@../assets.images/orange%20black.jpg" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="400.0" opacity="0.66" stroke="BLACK" strokeType="INSIDE" width="600.0" />
-      <JFXButton buttonType="RAISED" contentDisplay="TOP" graphicTextGap="0.0" layoutX="154.0" layoutY="294.0" prefHeight="82.0" prefWidth="94.0" ripplerFill="WHITE" style="-fx-background-color: #dd420a;" text="Employees" textFill="WHITE">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="400.0" opacity="0.54" stroke="BLACK" strokeType="INSIDE" width="600.0" />
+      <JFXButton buttonType="RAISED" contentDisplay="TOP" graphicTextGap="0.0" layoutX="149.0" layoutY="294.0" prefHeight="82.0" prefWidth="94.0" ripplerFill="WHITE" style="-fx-background-color: #c95e15;" text="Employees" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="150.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -35,16 +35,13 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
-         <effect>
-            <Glow level="1.0" />
-         </effect>
       </JFXButton>
-      <ImageView fitHeight="76.0" fitWidth="73.0" layoutX="9.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="139.0" fitWidth="176.0" layoutX="447.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets.images/293705787_476744561117680_5718458805481433477_n.png" />
          </image>
       </ImageView>
-      <JFXButton buttonType="RAISED" contentDisplay="TOP" graphicTextGap="0.0" layoutX="264.0" layoutY="294.0" prefHeight="82.0" prefWidth="94.0" ripplerFill="WHITE" style="-fx-background-color: #dd420a;" text="Customers" textFill="WHITE">
+      <JFXButton buttonType="RAISED" contentDisplay="TOP" graphicTextGap="0.0" layoutX="258.0" layoutY="294.0" prefHeight="82.0" prefWidth="94.0" ripplerFill="WHITE" style="-fx-background-color: #c95e15;" text="Customers" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="150.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -61,11 +58,8 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
-         <effect>
-            <Glow level="1.0" />
-         </effect>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="TOP" graphicTextGap="0.0" layoutX="35.0" layoutY="294.0" prefHeight="82.0" prefWidth="102.0" ripplerFill="WHITE" style="-fx-background-color: #dd420a;" text="Appointments" textFill="WHITE">
+      <JFXButton buttonType="RAISED" contentDisplay="TOP" graphicTextGap="0.0" layoutX="31.0" layoutY="294.0" prefHeight="82.0" prefWidth="102.0" ripplerFill="WHITE" style="-fx-background-color: #c95e15;" text="Appointments" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="150.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -82,9 +76,43 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
-         <effect>
-            <Glow level="1.0" />
-         </effect>
       </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="TOP" graphicTextGap="0.0" layoutX="367.0" layoutY="294.0" prefHeight="82.0" prefWidth="94.0" ripplerFill="WHITE" style="-fx-background-color: #c95e15;" text="Items" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="150.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets.icons/item.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="1.0" />
+               </effect>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="Corbel Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="TOP" graphicTextGap="0.0" layoutX="476.0" layoutY="294.0" prefHeight="82.0" prefWidth="94.0" ripplerFill="WHITE" style="-fx-background-color: #c95e15;" text="Orders" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="150.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets.icons/Orders.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="1.0" />
+               </effect>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="Corbel Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <Label layoutX="12.0" layoutY="7.0" text="Hello User!" textFill="WHITE" />
    </children>
 </AnchorPane>
