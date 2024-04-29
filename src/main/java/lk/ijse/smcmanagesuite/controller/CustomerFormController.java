@@ -122,6 +122,8 @@ public class CustomerFormController {
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
+        clearFields();
+        initialize();
     }
 
     @FXML
@@ -140,6 +142,7 @@ public class CustomerFormController {
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
+        initialize();
     }
 
     @FXML
@@ -158,6 +161,7 @@ public class CustomerFormController {
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
+        initialize();
     }
 
     @FXML
