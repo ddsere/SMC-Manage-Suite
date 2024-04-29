@@ -1,14 +1,141 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="lk.ijse.smcmanagesuite.controller.ItemFormController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.smcmanagesuite.controller.ItemFormController">
+   <children>
+      <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true">
+         <image>
+            <Image url="@../assets.images/orangeblack.jpg" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="400.0" opacity="0.66" stroke="BLACK" strokeType="INSIDE" width="600.0" />
+      <Label layoutX="17.0" layoutY="14.0" text="Manage Items" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="499.0" layoutY="15.0" onAction="#btnBackOnAction" prefWidth="83.0" style="-fx-background-color: #000000;" text="BACK" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="17.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets.icons/back.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="1.0" />
+               </effect>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <TextField fx:id="txtCode" layoutX="17.0" layoutY="86.0" onAction="#txtSearchOnAction" prefHeight="26.0" prefWidth="130.0" />
+      <Label layoutX="17.0" layoutY="67.0" text="Item Code *" textFill="WHITE" />
+      <TextField fx:id="txtDescription" layoutX="169.0" layoutY="86.0" prefHeight="26.0" prefWidth="171.0" />
+      <Label layoutX="169.0" layoutY="67.0" text="Description *" textFill="WHITE" />
+      <TextField fx:id="txtQtyOnHand" layoutX="498.0" layoutY="86.0" prefHeight="26.0" prefWidth="83.0" />
+      <Label layoutX="498.0" layoutY="67.0" text="Qty On Hand *" textFill="WHITE" />
+      <JFXButton layoutX="498.0" layoutY="143.0" onAction="#btnSaveOnAction" prefWidth="83.0" style="-fx-background-color: #199917;" text="SAVE" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="17.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets.icons/save.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="1.0" />
+               </effect>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton layoutX="406.0" layoutY="143.0" onAction="#btnUpdateOnAction" style="-fx-background-color: #e6a502;" text="UPDATE" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets.icons/settings.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="1.0" />
+               </effect>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton layoutX="313.0" layoutY="143.0" onAction="#btnDeleteOnAction" prefHeight="26.0" prefWidth="83.0" style="-fx-background-color: #a30202;" text="DELETE" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="15.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets.icons/remove.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="1.0" />
+               </effect>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton layoutX="220.0" layoutY="143.0" onAction="#btnClearOnAction" prefHeight="26.0" prefWidth="83.0" style="-fx-background-color: #474545;" text="CLEAR" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets.icons/broom.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="1.0" />
+               </effect>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <TableView fx:id="tblItem" layoutX="17.0" layoutY="198.0" prefHeight="183.0" prefWidth="566.0">
+         <columns>
+            <TableColumn fx:id="colSupID" prefWidth="97.60003662109375" text="Supplier ID" />
+            <TableColumn fx:id="colCode" prefWidth="103.20001220703125" text="ItemCode" />
+            <TableColumn fx:id="colDescription" prefWidth="198.39996337890625" text="Description" />
+            <TableColumn fx:id="colUnitPrice" prefWidth="96.0" text="Unit Price" />
+            <TableColumn fx:id="colQty" prefWidth="68.80002441406248" text="Qty" />
+         </columns>
+      </TableView>
+      <JFXComboBox fx:id="cmbSupId" layoutX="17.0" layoutY="143.0" onAction="#cmbSupplierOnAction" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: #ffffff;" />
+      <TextField fx:id="txtUnitPrice" layoutX="363.0" layoutY="86.0" prefHeight="26.0" prefWidth="112.0" />
+      <Label layoutX="363.0" layoutY="67.0" text="Unit Price *" textFill="WHITE" />
+      <Label layoutX="17.0" layoutY="125.0" text="Supplier ID *" textFill="WHITE" />
+   </children>
 </AnchorPane>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -21,7 +22,7 @@
          </image>
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="400.0" opacity="0.66" stroke="BLACK" strokeType="INSIDE" width="600.0" />
-      <Label layoutX="25.0" layoutY="14.0" text="Manage Suppliers" textFill="WHITE">
+      <Label layoutX="17.0" layoutY="14.0" text="Manage Suppliers" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -40,6 +41,9 @@
                </effect>
             </ImageView>
          </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </JFXButton>
       <TextField fx:id="txtId" layoutX="17.0" layoutY="88.0" onAction="#txtSearchOnAction" prefHeight="26.0" prefWidth="173.0" />
       <Label layoutX="17.0" layoutY="69.0" text="Supplier ID *" textFill="WHITE" />
@@ -61,6 +65,9 @@
                </effect>
             </ImageView>
          </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </JFXButton>
       <JFXButton layoutX="406.0" layoutY="141.0" onAction="#btnUpdateOnAction" style="-fx-background-color: #e6a502;" text="UPDATE" textFill="WHITE">
          <font>
@@ -76,6 +83,9 @@
                </effect>
             </ImageView>
          </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </JFXButton>
       <JFXButton layoutX="313.0" layoutY="141.0" onAction="#btnDeleteOnAction" prefHeight="26.0" prefWidth="83.0" style="-fx-background-color: #a30202;" text="DELETE" textFill="WHITE">
          <font>
@@ -91,6 +101,9 @@
                </effect>
             </ImageView>
          </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </JFXButton>
       <JFXButton layoutX="220.0" layoutY="141.0" onAction="#btnClearOnAction" prefHeight="26.0" prefWidth="83.0" style="-fx-background-color: #474545;" text="CLEAR" textFill="WHITE">
          <font>
@@ -106,6 +119,9 @@
                </effect>
             </ImageView>
          </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </JFXButton>
       <TableView fx:id="tblSupplier" layoutX="17.0" layoutY="198.0" prefHeight="183.0" prefWidth="566.0">
          <columns>
