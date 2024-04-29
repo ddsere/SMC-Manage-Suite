@@ -41,7 +41,7 @@
             <Image url="@../assets.images/293705787_476744561117680_5718458805481433477_n.png" />
          </image>
       </ImageView>
-      <JFXButton buttonType="RAISED" contentDisplay="TOP" graphicTextGap="0.0" layoutX="258.0" layoutY="294.0" prefHeight="82.0" prefWidth="94.0" ripplerFill="WHITE" style="-fx-background-color: #c95e15;" text="Customers" textFill="WHITE">
+      <JFXButton buttonType="RAISED" contentDisplay="TOP" graphicTextGap="0.0" layoutX="258.0" layoutY="294.0" onAction="#btnCustomerOnAction" prefHeight="82.0" prefWidth="94.0" ripplerFill="WHITE" style="-fx-background-color: #c95e15;" text="Customers" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="150.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
                <image>
