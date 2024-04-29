@@ -14,18 +14,20 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.smcmanagesuite.model.Customer;
-import lk.ijse.smcmanagesuite.model.tm.CustomerTm;
+import lk.ijse.smcmanagesuite.model.Supplier;
+import lk.ijse.smcmanagesuite.model.tm.SupplierTm;
 import lk.ijse.smcmanagesuite.repository.CustomerRepo;
+import lk.ijse.smcmanagesuite.repository.SupplierRepo;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CustomerFormController {
+public class SupplierFormController {
 
     @FXML
-    private TableColumn<?, ?> colAddress;
+    private TableColumn<?, ?> colId;
 
     @FXML
     private TableColumn<?, ?> colName;
@@ -37,10 +39,10 @@ public class CustomerFormController {
     private AnchorPane root;
 
     @FXML
-    private TableView<CustomerTm> tblCustomer;
+    private TableView<SupplierTm> tblSupplier;
 
     @FXML
-    private TextField txtAddress;
+    private TextField txtId;
 
     @FXML
     private TextField txtName;
@@ -48,45 +50,45 @@ public class CustomerFormController {
     @FXML
     private TextField txtTel;
 
-    private List<Customer> customerList = new ArrayList<>();
+    private List<Supplier> supplierList = new ArrayList<>();
 
     public void initialize() {
-        this.customerList = getAllCustomers();
+        this.supplierList = getAllSuppliers();
         setCellValueFactory();
-        loadCustomerTable();
+        loadSupplierTable();
     }
 
     private void setCellValueFactory() {
+        colId.setCellValueFactory(new PropertyValueFactory<>("SupId"));
         colName.setCellValueFactory(new PropertyValueFactory<>("Name"));
-        colAddress.setCellValueFactory(new PropertyValueFactory<>("Address"));
         colPhone.setCellValueFactory(new PropertyValueFactory<>("Phone"));
     }
 
-    private void loadCustomerTable() {
-        ObservableList<CustomerTm> tmList = FXCollections.observableArrayList();
+    private void loadSupplierTable() {
+        ObservableList<SupplierTm> tmList = FXCollections.observableArrayList();
 
-        for (Customer customer : customerList) {
-            CustomerTm customerTm = new CustomerTm(
-                    customer.getName(),
-                    customer.getAddress(),
-                    customer.getTel()
+        for (Supplier supplier : supplierList) {
+            SupplierTm supplierTm = new SupplierTm(
+                    supplier.getSupId(),
+                    supplier.getName(),
+                    supplier.getTel()
             );
 
-            tmList.add(customerTm);
+            tmList.add(supplierTm);
         }
-        tblCustomer.setItems(tmList);
-        CustomerTm selectedItem = (CustomerTm) tblCustomer.getSelectionModel().getSelectedItem();
+        tblSupplier.setItems(tmList);
+        SupplierTm selectedItem = (SupplierTm) tblSupplier.getSelectionModel().getSelectedItem();
         //System.out.println("selectedItem = " + selectedItem);
     }
 
-    private List<Customer> getAllCustomers() {
-        List<Customer> customerList = null;
+    private List<Supplier> getAllSuppliers() {
+        List<Supplier> supplierList = null;
         try {
-            customerList = CustomerRepo.getAll();
+            supplierList = SupplierRepo.getAll();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return customerList;
+        return supplierList;
     }
 
     @FXML
@@ -100,8 +102,8 @@ public class CustomerFormController {
     }
 
     private void clearFields() {
+        txtId.setText("");
         txtName.setText("");
-        txtAddress.setText("");
         txtTel.setText("");
     }
 
@@ -112,12 +114,12 @@ public class CustomerFormController {
 
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
-        String id = txtTel.getText();
+        String id = txtId.getText();
 
         try {
-            boolean isDeleted = CustomerRepo.delete(id);
+            boolean isDeleted = SupplierRepo.delete(id);
             if (isDeleted) {
-                new Alert(Alert.AlertType.CONFIRMATION, "customer deleted!").show();
+                new Alert(Alert.AlertType.CONFIRMATION, "Supplier Deleted!").show();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -128,16 +130,16 @@ public class CustomerFormController {
 
     @FXML
     void btnSaveOnAction(ActionEvent event) {
+        String id = txtId.getText();
         String name = txtName.getText();
-        String address = txtAddress.getText();
         String tel = txtTel.getText();
 
-        Customer customer = new Customer(name, address, tel);
+        Supplier supplier = new Supplier(id, name, tel);
 
         try {
-            boolean isSaved = CustomerRepo.save(customer);
+            boolean isSaved = SupplierRepo.save(supplier);
             if (isSaved) {
-                new Alert(Alert.AlertType.CONFIRMATION, "customer saved!").show();
+                new Alert(Alert.AlertType.CONFIRMATION, "Supplier Saved!").show();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -147,16 +149,16 @@ public class CustomerFormController {
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
-        String name = txtName.getText();
-        String address = txtAddress.getText();
+        String name = txtId.getText();
+        String address = txtName.getText();
         String tel = txtTel.getText();
 
-        Customer customer = new Customer(name, address, tel);
+        Supplier supplier = new Supplier(name, address, tel);
 
         try {
-            boolean isUpdated = CustomerRepo.update(customer);
+            boolean isUpdated = SupplierRepo.update(supplier);
             if (isUpdated) {
-                new Alert(Alert.AlertType.CONFIRMATION, "customer updated!").show();
+                new Alert(Alert.AlertType.CONFIRMATION, "Supplier Updated!").show();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -166,15 +168,15 @@ public class CustomerFormController {
 
     @FXML
     void txtSearchOnAction(ActionEvent event) {
-        String id = txtTel.getText();
+        String id = txtId.getText();
 
         try {
-            Customer customer = CustomerRepo.searchById(id);
+            Supplier supplier = SupplierRepo.searchById(id);
 
-            if (customer != null) {
-                txtTel.setText(customer.getTel());
-                txtName.setText(customer.getName());
-                txtAddress.setText(customer.getAddress());
+            if (supplier != null) {
+                txtTel.setText(supplier.getTel());
+                txtName.setText(supplier.getName());
+                txtId.setText(supplier.getSupId());
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();

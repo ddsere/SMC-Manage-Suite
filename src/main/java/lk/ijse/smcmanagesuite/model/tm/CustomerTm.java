@@ -1,6 +1,7 @@
 package lk.ijse.smcmanagesuite.model.tm;
 
 import lombok.*;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
