@@ -6,56 +6,77 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="rootNode" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.smcmanagesuite.controller.RegistrationFormController">
+<AnchorPane fx:id="rootNode" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.smcmanagesuite.controller.RegistrationFormController">
    <children>
-      <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="782.0" layoutY="-11.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1371.0">
+         <fill>
+            <LinearGradient endX="0.5151515079267097" endY="1.0" startX="0.5265151438387958">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.9368420839309692" green="0.7841715216636658" blue="0.7460039258003235" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.6811695694923401" green="0.7231345176696777" blue="0.821052610874176" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <ImageView blendMode="SCREEN" fitHeight="150.0" fitWidth="200.0" layoutX="9.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assets.images/andrea-donato-KTP6PvqCryg-unsplash.jpg" />
+            <Image url="@../assets.images/master-cut.png" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="400.0" opacity="0.84" stroke="BLACK" strokeType="INSIDE" width="600.0" />
-      <ImageView fitHeight="76.0" fitWidth="73.0" layoutX="9.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="612.0" fitWidth="698.0" layoutX="82.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assets.images/293705787_476744561117680_5718458805481433477_n.png" />
+            <Image url="@../assets.images/regpageimg2.png" />
          </image>
       </ImageView>
-      <Text fill="WHITE" layoutX="70.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WELCOME TO" textAlignment="CENTER" wrappingWidth="191.0">
+      <TextField fx:id="txtUserId" layoutX="849.0" layoutY="269.0" prefHeight="50.0" prefWidth="370.0" promptText="Enter User ID" style="-fx-background-radius: 10;">
          <font>
-            <Font name="System Bold" size="24.0" />
-         </font></Text>
-      <Text fill="#ff0101" layoutX="41.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SMC MANAGE SUITE" textAlignment="CENTER" wrappingWidth="247.4176025390625">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font>
-      </Text>
-      <TextField fx:id="txtUserId" layoutX="389.0" layoutY="134.0" prefHeight="25.0" prefWidth="154.0" promptText="Enter User ID">
-         <font>
-            <Font name="Calibri" size="12.0" />
+            <Font name="Calibri" size="22.0" />
          </font></TextField>
-      <Label layoutX="389.0" layoutY="115.0" text="User ID" textFill="WHITE" />
-      <TextField fx:id="txtUserName" layoutX="390.0" layoutY="190.0" prefHeight="25.0" prefWidth="154.0" promptText="Enter Your Name">
+      <Label layoutX="859.0" layoutY="237.0" text="User ID">
          <font>
-            <Font name="Calibri" size="12.0" />
+            <Font size="22.0" />
+         </font></Label>
+      <TextField fx:id="txtUserName" layoutX="850.0" layoutY="375.0" prefHeight="50.0" prefWidth="370.0" promptText="Enter Your Name" style="-fx-background-radius: 10;">
+         <font>
+            <Font name="Calibri" size="22.0" />
          </font></TextField>
-      <Label layoutX="390.0" layoutY="171.0" prefHeight="18.0" prefWidth="39.0" text="Name" textFill="WHITE" />
-      <TextField fx:id="txtPassword" layoutX="390.0" layoutY="248.0" prefHeight="25.0" prefWidth="154.0" promptText="Enter Your Password">
+      <Label layoutX="859.0" layoutY="343.0" prefHeight="32.0" prefWidth="71.0" text="Name">
          <font>
-            <Font name="Calibri" size="12.0" />
+            <Font size="22.0" />
+         </font></Label>
+      <TextField fx:id="txtPassword" layoutX="850.0" layoutY="483.0" prefHeight="50.0" prefWidth="370.0" promptText="Enter Your Password" style="-fx-background-radius: 10;">
+         <font>
+            <Font name="Calibri" size="22.0" />
          </font></TextField>
-      <Label layoutX="390.0" layoutY="229.0" text="Password" textFill="WHITE" />
-      <JFXButton layoutX="390.0" layoutY="305.0" onAction="#btnRegisterOnAction" prefHeight="26.0" prefWidth="154.0" style="-fx-background-color: #ff6600;" text="Register" textFill="WHITE">
+      <Label layoutX="860.0" layoutY="451.0" text="Password">
          <font>
-            <Font name="Calibri Bold" size="12.0" />
+            <Font size="22.0" />
+         </font></Label>
+      <JFXButton buttonType="RAISED" layoutX="850.0" layoutY="590.0" onAction="#btnRegisterOnAction" prefHeight="50.0" prefWidth="370.0" style="-fx-background-color: #030303; -fx-background-radius: 10;" text="Register" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
          </font>
       </JFXButton>
-      <Label layoutX="428.0" layoutY="63.0" prefHeight="28.0" prefWidth="76.0" text="REGISTER" textFill="#ff6600" underline="true">
+      <Label layoutX="949.0" layoutY="120.0" prefHeight="54.0" prefWidth="166.0" text="REGISTER">
          <font>
-            <Font name="Calibri Bold" size="18.0" />
+            <Font name="System Bold" size="36.0" />
          </font>
       </Label>
+      <Line endX="50.33331298828125" layoutX="1034.0" layoutY="174.0" startX="-58.466644287109375" strokeWidth="2.0" />
    </children>
 </AnchorPane>

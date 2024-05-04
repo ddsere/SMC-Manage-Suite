@@ -8,7 +8,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Region;
 import javafx.stage.Stage;
+import javafx.scene.input.MouseEvent;
 import lk.ijse.smcmanagesuite.db.DbConnection;
 
 import java.io.IOException;
@@ -27,6 +29,7 @@ public class LoginFormController {
 
     @FXML
     public TextField txtUserId;
+    public Region myRegion;
 
     @FXML
     public void linkForgetPasswordOnAction(ActionEvent event) {
@@ -78,7 +81,7 @@ public class LoginFormController {
     }
 
     @FXML
-    public void linkRegistrationOnAction(ActionEvent event) throws IOException {
+    public void linkRegistrationOnAction(MouseEvent event) throws IOException {
         Parent rootNode = FXMLLoader.load(this.getClass().getResource("/view/RegistrationForm.fxml"));
 
         Scene scene = new Scene(rootNode);
