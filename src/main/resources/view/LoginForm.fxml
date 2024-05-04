@@ -60,7 +60,10 @@
          </font>
          <effect>
             <DropShadow height="77.47" radius="38.155" spread="0.45" width="77.15" />
-         </effect></JFXButton>
+         </effect>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></JFXButton>
       <Label layoutX="172.0" layoutY="253.0" text="Username">
          <font>
             <Font size="22.0" />
