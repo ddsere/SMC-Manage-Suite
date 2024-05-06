@@ -39,4 +39,27 @@ public class DashboardController {
         stage.centerOnScreen();
     }
 
+    public void btnAppointmentOnAction(ActionEvent actionEvent) {
+
+    }
+
+    public void btnOrderOnAction(ActionEvent actionEvent) {
+
+    }
+
+    public void btnEmployeeOnAction(ActionEvent actionEvent) {
+
+    }
+
+    public void btnServiceOnAction(ActionEvent actionEvent) {
+
+    }
+
+    public void btnPlaceOrderOnAction(ActionEvent actionEvent) {
+
+    }
+
+    public void btnLogoutOnAction(ActionEvent actionEvent) {
+
+    }
 }

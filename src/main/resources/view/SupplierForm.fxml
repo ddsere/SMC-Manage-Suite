@@ -13,15 +13,9 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.smcmanagesuite.controller.SupplierFormController">
+<AnchorPane fx:id="root" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.smcmanagesuite.controller.SupplierFormController">
    <children>
-      <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true">
-         <image>
-            <Image url="@../assets.images/orangeblack.jpg" />
-         </image>
-      </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="400.0" opacity="0.66" stroke="BLACK" strokeType="INSIDE" width="600.0" />
+      <Rectangle height="768.0" stroke="BLACK" strokeType="INSIDE" width="1366.0" />
       <Label layoutX="17.0" layoutY="14.0" text="Manage Suppliers" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />

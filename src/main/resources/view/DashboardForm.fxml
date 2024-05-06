@@ -11,17 +11,18 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane fx:id="rootNode" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.smcmanagesuite.controller.DashboardController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e7ebfa" height="768.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1366.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="70.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1367.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1e1e25" height="767.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="322.0" />
-      <JFXButton alignment="BASELINE_LEFT" graphicTextGap="30.0" layoutX="17.0" layoutY="494.0" onAction="#btnSupplierOnAction" prefHeight="82.0" prefWidth="299.0" ripplerFill="WHITE" style="-fx-background-color: #1E1E25; -fx-border-color: #1E1E25;" text="Suppliers" textFill="WHITE">
+      <Rectangle fill="#cfdaff" height="768.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1366.0" />
+      <Rectangle fill="WHITE" height="69.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1367.0" />
+      <Rectangle fill="#1e1e25" height="767.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="322.0" />
+      <JFXButton alignment="BASELINE_LEFT" graphicTextGap="30.0" layoutX="12.0" layoutY="414.0" onAction="#btnSupplierOnAction" prefHeight="82.0" prefWidth="299.0" ripplerFill="WHITE" style="-fx-background-color: #1E1E25; -fx-border-color: #1E1E25;" text="Suppliers" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="37.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets.icons/delivery-box.png" />
+                  <Image url="@../assets.icons/delivery-truck.png" />
                </image>
                <effect>
                   <ColorAdjust brightness="1.0" />
@@ -29,17 +30,17 @@
             </ImageView>
          </graphic>
          <font>
-            <Font name="Corbel Bold" size="20.0" />
+            <Font name="Corbel Bold" size="26.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton alignment="BASELINE_LEFT" buttonType="RAISED" graphicTextGap="24.0" layoutX="17.0" layoutY="248.0" onAction="#btnCustomerOnAction" prefHeight="82.0" prefWidth="299.0" ripplerFill="WHITE" style="-fx-background-color: #1E1E25; -fx-border-color: #1E1E25;" text="Customers" textFill="WHITE">
+      <JFXButton alignment="BASELINE_LEFT" graphicTextGap="24.0" layoutX="12.0" layoutY="168.0" onAction="#btnCustomerOnAction" prefHeight="82.0" prefWidth="299.0" ripplerFill="WHITE" style="-fx-background-color: #1E1E25; -fx-border-color: #1E1E25;" text="Customers" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="35.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets.icons/customer.png" />
+                  <Image url="@../assets.icons/hand.png" />
                </image>
                <effect>
                   <ColorAdjust brightness="1.0" />
@@ -47,15 +48,15 @@
             </ImageView>
          </graphic>
          <font>
-            <Font name="Corbel Bold" size="20.0" />
+            <Font name="Corbel Bold" size="26.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton alignment="BASELINE_LEFT" graphicTextGap="26.0" layoutX="17.0" layoutY="167.0" prefHeight="82.0" prefWidth="299.0" ripplerFill="WHITE" style="-fx-background-color: #1E1E25; -fx-border-color: #1E1E25;" text="Appointments" textFill="WHITE">
+      <JFXButton alignment="BASELINE_LEFT" graphicTextGap="26.0" layoutX="12.0" layoutY="87.0" onAction="#btnAppointmentOnAction" prefHeight="82.0" prefWidth="299.0" ripplerFill="WHITE" style="-fx-background-color: #1E1E25; -fx-border-color: #1E1E25;" text="Appointments" textFill="WHITE">
          <font>
-            <Font name="Corbel Bold" size="20.0" />
+            <Font name="Corbel Bold" size="26.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
@@ -63,7 +64,7 @@
          <graphic>
             <ImageView fitHeight="36.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets.icons/flag.png" />
+                  <Image url="@../assets.icons/appointment.png" />
                </image>
                <effect>
                   <ColorAdjust brightness="1.0" contrast="-1.0" />
@@ -71,11 +72,11 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton alignment="BASELINE_LEFT" graphicTextGap="26.0" layoutX="17.0" layoutY="412.0" onAction="#btnItemOnAction" prefHeight="82.0" prefWidth="299.0" ripplerFill="WHITE" style="-fx-background-color: #1E1E25; -fx-border-color: #1E1E25;" text="Items" textFill="WHITE">
+      <JFXButton alignment="BASELINE_LEFT" graphicTextGap="26.0" layoutX="12.0" layoutY="332.0" onAction="#btnItemOnAction" prefHeight="82.0" prefWidth="299.0" ripplerFill="WHITE" style="-fx-background-color: #1E1E25; -fx-border-color: #1E1E25;" text="Items" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="56.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets.icons/item.png" />
+                  <Image url="@../assets.icons/packages.png" />
                </image>
                <effect>
                   <ColorAdjust brightness="1.0" />
@@ -83,17 +84,17 @@
             </ImageView>
          </graphic>
          <font>
-            <Font name="Corbel Bold" size="20.0" />
+            <Font name="Corbel Bold" size="26.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton alignment="BASELINE_LEFT" graphicTextGap="30.0" layoutX="17.0" layoutY="576.0" prefHeight="82.0" prefWidth="299.0" ripplerFill="WHITE" style="-fx-background-color: #1E1E25; -fx-border-color: #1E1E25;" text="Orders" textFill="WHITE">
+      <JFXButton alignment="BASELINE_LEFT" graphicTextGap="30.0" layoutX="12.0" layoutY="496.0" onAction="#btnOrderOnAction" prefHeight="82.0" prefWidth="299.0" ripplerFill="WHITE" style="-fx-background-color: #1E1E25; -fx-border-color: #1E1E25;" text="Orders" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="56.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets.icons/Orders.png" />
+                  <Image url="@../assets.icons/Orders2.png" />
                </image>
                <effect>
                   <ColorAdjust brightness="1.0" />
@@ -101,19 +102,19 @@
             </ImageView>
          </graphic>
          <font>
-            <Font name="Corbel Bold" size="20.0" />
+            <Font name="Corbel Bold" size="26.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <Label layoutX="102.0" layoutY="13.0" text="Hello User!" textFill="WHITE">
+      <Label layoutX="62.0" layoutY="21.0" text="Hello User!" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="22.0" />
+            <Font size="20.0" />
          </font></Label>
-      <JFXButton alignment="BASELINE_LEFT" graphicTextGap="25.0" layoutX="17.0" layoutY="330.0" prefHeight="82.0" prefWidth="299.0" ripplerFill="WHITE" style="-fx-background-color: #1E1E25; -fx-border-color: #1E1E25;" text="Employees" textFill="WHITE">
+      <JFXButton alignment="BASELINE_LEFT" graphicTextGap="25.0" layoutX="12.0" layoutY="250.0" onAction="#btnEmployeeOnAction" prefHeight="82.0" prefWidth="299.0" ripplerFill="WHITE" style="-fx-background-color: #1E1E25; -fx-border-color: #1E1E25;" text="Employees" textFill="WHITE">
          <font>
-            <Font name="Corbel Bold" size="20.0" />
+            <Font name="Corbel Bold" size="26.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
@@ -121,7 +122,7 @@
          <graphic>
             <ImageView fitHeight="56.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets.icons/business-group_hires.png" />
+                  <Image url="@../assets.icons/employee.png" />
                </image>
                <effect>
                   <ColorAdjust brightness="1.0" />
@@ -129,28 +130,127 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <Circle fill="#1fff4b" layoutX="83.0" layoutY="29.0" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-      <Line endX="-100.00001525878906" endY="299.26666259765625" layoutX="189.0" layoutY="405.0" startX="-100.00001525878906" startY="-254.3333282470703" stroke="WHITE" visible="false" />
-      <Label alignment="CENTER_RIGHT" layoutX="703.0" layoutY="143.0" prefHeight="195.0" prefWidth="131.0" text="12">
+      <JFXButton alignment="BASELINE_LEFT" graphicTextGap="30.0" layoutX="12.0" layoutY="578.0" onAction="#btnServiceOnAction" prefHeight="82.0" prefWidth="299.0" ripplerFill="WHITE" style="-fx-background-color: #1E1E25; -fx-border-color: #1E1E25;" text="Services" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="56.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets.icons/services.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="1.0" />
+               </effect>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="Corbel Bold" size="26.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton alignment="BASELINE_LEFT" graphicTextGap="30.0" layoutX="12.0" layoutY="660.0" onAction="#btnPlaceOrderOnAction" prefHeight="82.0" prefWidth="299.0" ripplerFill="WHITE" style="-fx-background-color: #1E1E25; -fx-border-color: #1E1E25;" text="Place Order" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="56.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets.icons/checkout.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="1.0" />
+               </effect>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="Corbel Bold" size="26.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <Circle fill="#1fff4b" layoutX="43.0" layoutY="37.0" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Label alignment="CENTER_RIGHT" layoutX="703.0" layoutY="118.0" prefHeight="195.0" prefWidth="131.0" text="12">
          <font>
             <Font name="System Bold" size="96.0" />
          </font>
       </Label>
-      <Label alignment="CENTER_RIGHT" layoutX="847.0" layoutY="158.0" prefHeight="84.0" prefWidth="27.0" text=":">
+      <Label alignment="CENTER_RIGHT" layoutX="847.0" layoutY="133.0" prefHeight="84.0" prefWidth="27.0" text=":">
          <font>
             <Font name="System Bold" size="96.0" />
          </font>
       </Label>
-      <Label alignment="CENTER_RIGHT" layoutX="883.0" layoutY="143.0" prefHeight="195.0" prefWidth="131.0" text="28">
+      <Label alignment="CENTER_RIGHT" layoutX="883.0" layoutY="118.0" prefHeight="195.0" prefWidth="131.0" text="28">
          <font>
             <Font name="System Bold" size="96.0" />
          </font>
       </Label>
-      <Label layoutX="755.0" layoutY="290.0" text="Sunday, May 5">
+      <Label layoutX="755.0" layoutY="265.0" text="Sunday, May 5">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
-      <Line endX="100.0" layoutX="202.0" layoutY="70.0" startX="-185.20001220703125" startY="2.288818359375E-5" stroke="#5e5e5e" />
+      <Text fill="#898989" fontSmoothingType="LCD" layoutX="355.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SMC MANAGE SUITE">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Text>
+      <Label layoutX="374.0" layoutY="482.0" text="Overview">
+         <font>
+            <Font name="System Bold" size="28.0" />
+         </font>
+      </Label>
+      <Line endX="854.2000732421875" endY="-0.999969482421875" layoutX="510.0" layoutY="71.0" startX="-186.79998779296875" startY="-0.9999656677246094" stroke="#e4e2e2" strokeWidth="2.0" />
+      <Line endX="820.39990234375" endY="-0.999969482421875" layoutX="501.0" layoutY="467.0" startX="-124.90704345703125" startY="-0.999969482421875" stroke="#cfcfcf" strokeWidth="2.0" />
+      <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="162.0" layoutX="376.0" layoutY="543.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="275.0" />
+      <Label layoutX="411.0" layoutY="654.0" text="Bookings" textFill="#817f7f">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Line endX="-4.414276123046875" endY="-0.9999656677246094" layoutX="325.0" layoutY="71.0" startX="-325.0" startY="-0.9999656677246094" stroke="#383838" strokeWidth="2.0" />
+      <Label layoutX="408.0" layoutY="536.0" text="0" textFill="#4145b4">
+         <font>
+            <Font name="System Bold" size="96.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="162.0" layoutX="714.0" layoutY="543.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="275.0" />
+      <Label layoutX="749.0" layoutY="654.0" text="Total Sales" textFill="#817f7f">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="746.0" layoutY="536.0" text="0" textFill="#4145b4">
+         <font>
+            <Font name="System Bold" size="96.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="162.0" layoutX="1047.0" layoutY="540.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="275.0" />
+      <Label layoutX="1082.0" layoutY="651.0" text="Total Customers" textFill="#817f7f">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="1079.0" layoutY="533.0" text="0" textFill="#4145b4">
+         <font>
+            <Font name="System Bold" size="96.0" />
+         </font>
+      </Label>
+      <Line endX="-100.00001525878906" endY="322.73333740234375" layoutX="189.0" layoutY="405.0" startX="-100.00001525878906" startY="-318.0" stroke="WHITE" visible="false" />
+      <JFXButton graphicTextGap="15.0" layoutX="1229.0" layoutY="13.0" onAction="#btnLogoutOnAction" style="-fx-border-color: #1e1e25; -fx-border-radius: 5;" text="Logout" textFill="#5e5e5e">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="26.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets.icons/log-out.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="-0.13" contrast="-0.8" />
+               </effect>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
    </children>
 </AnchorPane>
