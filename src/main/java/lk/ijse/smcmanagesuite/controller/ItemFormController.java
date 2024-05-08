@@ -7,16 +7,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.smcmanagesuite.model.Item;
 import lk.ijse.smcmanagesuite.model.Supplier;
 import lk.ijse.smcmanagesuite.model.tm.ItemTm;
+import lk.ijse.smcmanagesuite.model.tm.SupplierTm;
 import lk.ijse.smcmanagesuite.repository.ItemRepo;
 import lk.ijse.smcmanagesuite.repository.SupplierRepo;
 
@@ -43,7 +41,13 @@ public class ItemFormController {
     private TableColumn<?, ?> colSupID;
 
     @FXML
+    private TableColumn<?, ?> colSupName;
+
+    @FXML
     private TableColumn<?, ?> colUnitPrice;
+
+    @FXML
+    private Label lblSupName;
 
     @FXML
     private AnchorPane root;
@@ -150,11 +154,11 @@ public class ItemFormController {
 
     @FXML
     void btnSaveOnAction(ActionEvent event) {
-        String supId = cmbSupId.getValue();
         String code = txtCode.getText();
         String description = txtDescription.getText();
         String price = txtUnitPrice.getText();
         String qty = txtQtyOnHand.getText();
+        String supId = cmbSupId.getValue();
 
         Item item = new Item(code,description,price,qty,supId);
 
@@ -171,17 +175,55 @@ public class ItemFormController {
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
+        String code = txtCode.getText();
+        String description = txtDescription.getText();
+        String price = txtUnitPrice.getText();
+        String qty = txtQtyOnHand.getText();
+        String supId = cmbSupId.getValue();
 
+        Item item = new Item(code,description,price,qty,supId);
+
+        try {
+            boolean isUpdated = ItemRepo.update(item);
+            if (isUpdated) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Item Updated!").show();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
+        initialize();
     }
 
     @FXML
     void cmbSupplierOnAction(ActionEvent event) {
+        String supId = cmbSupId.getValue();
 
+        try {
+            Supplier supplier = SupplierRepo.searchById(supId);
+
+            lblSupName.setText(supplier.getName());
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
     void txtSearchOnAction(ActionEvent event) {
+        String code = txtCode.getText();
 
+        try {
+            Item item = ItemRepo.searchById(code);
+
+            if (item != null) {
+                txtCode.setText(item.getItemId());
+                txtDescription.setText(item.getDescription());
+                txtUnitPrice.setText(item.getPrice());
+                txtQtyOnHand.setText(item.getQty());
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
     }
 
 }
