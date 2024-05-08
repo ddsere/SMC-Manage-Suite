@@ -10,19 +10,38 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="root" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.smcmanagesuite.controller.SupplierFormController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="768.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1366.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="768.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1366.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0" startX="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.9058823585510254" green="0.9176470637321472" blue="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.9333333373069763" green="0.9372549057006836" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill></Rectangle>
       <Label layoutX="27.0" layoutY="13.0" text="Manage Suppliers" textFill="#030303">
          <font>
             <Font size="48.0" />
          </font>
       </Label>
-      <JFXButton graphicTextGap="20.0" layoutX="56.0" layoutY="290.0" onAction="#btnBackOnAction" prefHeight="43.0" prefWidth="150.0" style="-fx-background-color: #000000;" text="BACK" textFill="WHITE">
+      <JFXButton graphicTextGap="20.0" layoutX="56.0" layoutY="290.0" onAction="#btnBackOnAction" prefHeight="43.0" prefWidth="300.0" style="-fx-background-color: #000000;" text="BACK TO MAIN MENU" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
@@ -56,7 +75,7 @@
          <font>
             <Font size="22.0" />
          </font></Label>
-      <TextField fx:id="txtTel" layoutX="939.0" layoutY="173.0" prefHeight="62.0" prefWidth="370.0">
+      <TextField fx:id="txtTel" layoutX="939.0" layoutY="171.0" prefHeight="62.0" prefWidth="370.0">
          <font>
             <Font size="28.0" />
          </font></TextField>

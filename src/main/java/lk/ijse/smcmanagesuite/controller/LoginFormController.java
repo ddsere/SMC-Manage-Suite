@@ -68,7 +68,7 @@ public class LoginFormController {
         }
     }
 
-    private void navigateToTheDashboard() throws IOException {
+    void navigateToTheDashboard() throws IOException {
         AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/DashboardForm.fxml"));
 
         Scene scene = new Scene(rootNode);

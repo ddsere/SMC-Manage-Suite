@@ -10,34 +10,59 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.smcmanagesuite.controller.CustomerFormController">
+<AnchorPane fx:id="root" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.smcmanagesuite.controller.CustomerFormController">
    <children>
-      <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true">
-         <image>
-            <Image url="@../assets.images/orangeblack.jpg" />
-         </image>
-      </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="400.0" opacity="0.66" stroke="BLACK" strokeType="INSIDE" width="600.0" />
-      <Label layoutX="17.0" layoutY="14.0" text="Manage Customers" textFill="WHITE">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="768.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1366.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0" startX="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.9058823585510254" green="0.9176470637321472" blue="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.9333333373069763" green="0.9372549057006836" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Label layoutX="27.0" layoutY="13.0" text="Manage Customers" textFill="#030303">
          <font>
-            <Font name="System Bold" size="18.0" />
+            <Font size="48.0" />
          </font>
       </Label>
-      <TextField fx:id="txtName" layoutX="17.0" layoutY="88.0" prefHeight="26.0" prefWidth="173.0" />
-      <Label layoutX="17.0" layoutY="69.0" text="Customer Name *" textFill="WHITE" />
-      <TextField fx:id="txtAddress" layoutX="226.0" layoutY="88.0" prefHeight="26.0" prefWidth="173.0" />
-      <Label layoutX="226.0" layoutY="69.0" text="Customer Address *" textFill="WHITE" />
-      <TextField fx:id="txtTel" layoutX="433.0" layoutY="88.0" onAction="#txtSearchOnAction" prefHeight="26.0" prefWidth="147.0" />
-      <Label layoutX="433.0" layoutY="69.0" text="Customer Tel *" textFill="WHITE" />
-      <JFXButton layoutX="499.0" layoutY="141.0" onAction="#btnSaveOnAction" prefWidth="83.0" style="-fx-background-color: #199917;" text="SAVE" textFill="WHITE">
+      <TextField fx:id="txtName" layoutX="57.0" layoutY="171.0" prefHeight="62.0" prefWidth="370.0" />
+      <Label layoutX="57.0" layoutY="133.0" text="Customer Name *" textFill="#030303">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font size="22.0" />
+         </font></Label>
+      <TextField fx:id="txtAddress" layoutX="498.0" layoutY="171.0" prefHeight="62.0" prefWidth="370.0" />
+      <Label layoutX="498.0" layoutY="133.0" text="Customer Address *" textFill="#030303">
+         <font>
+            <Font size="22.0" />
+         </font></Label>
+      <TextField fx:id="txtTel" layoutX="939.0" layoutY="171.0" onAction="#txtSearchOnAction" prefHeight="62.0" prefWidth="370.0" />
+      <Label layoutX="939.0" layoutY="133.0" text="Customer Tel *" textFill="#030303">
+         <font>
+            <Font size="22.0" />
+         </font></Label>
+      <JFXButton graphicTextGap="14.0" layoutX="1169.0" layoutY="290.0" onAction="#btnSaveOnAction" prefWidth="140.0" style="-fx-background-color: #474545;" text="SAVE" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
          </font>
          <graphic>
-            <ImageView fitHeight="17.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="20.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets.icons/save.png" />
                </image>
@@ -50,12 +75,12 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton layoutX="406.0" layoutY="141.0" onAction="#btnUpdateOnAction" style="-fx-background-color: #e6a502;" text="UPDATE" textFill="WHITE">
+      <JFXButton graphicTextGap="14.0" layoutX="1010.0" layoutY="290.0" onAction="#btnUpdateOnAction" prefWidth="140.0" style="-fx-background-color: #474545;" text="UPDATE" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="20.0" />
          </font>
          <graphic>
-            <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="20.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets.icons/settings.png" />
                </image>
@@ -68,12 +93,12 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton layoutX="313.0" layoutY="141.0" onAction="#btnDeleteOnAction" prefHeight="26.0" prefWidth="83.0" style="-fx-background-color: #a30202;" text="DELETE" textFill="WHITE">
+      <JFXButton graphicTextGap="14.0" layoutX="684.0" layoutY="290.0" onAction="#btnDeleteOnAction" prefHeight="26.0" prefWidth="140.0" style="-fx-background-color: #474545;" text="DELETE" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="20.0" />
          </font>
          <graphic>
-            <ImageView fitHeight="15.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="20.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets.icons/remove.png" />
                </image>
@@ -86,12 +111,12 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton layoutX="220.0" layoutY="141.0" onAction="#btnClearOnAction" prefHeight="26.0" prefWidth="83.0" style="-fx-background-color: #474545;" text="CLEAR" textFill="WHITE">
+      <JFXButton graphicTextGap="14.0" layoutX="847.0" layoutY="290.0" onAction="#btnClearOnAction" prefHeight="26.0" prefWidth="140.0" style="-fx-background-color: #474545;" text="CLEAR" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="20.0" />
          </font>
          <graphic>
-            <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="24.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets.icons/broom.png" />
                </image>
@@ -104,21 +129,22 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <TableView fx:id="tblCustomer" layoutX="17.0" layoutY="198.0" prefHeight="183.0" prefWidth="566.0">
+      <TableView fx:id="tblCustomer" layoutX="56.0" layoutY="369.0" prefHeight="362.0" prefWidth="1254.0">
         <columns>
           <TableColumn fx:id="colName" prefWidth="146.4000244140625" text="Name" />
           <TableColumn fx:id="colAddress" prefWidth="187.20001220703125" text="Address" />
             <TableColumn fx:id="colPhone" prefWidth="232.79998779296875" text="Phone" />
         </columns>
       </TableView>
-      <JFXButton layoutX="499.0" layoutY="15.0" onAction="#btnBackOnAction" prefWidth="83.0" style="-fx-background-color: #000000;" text="BACK" textFill="WHITE">
+      <Line endX="1236.0" endY="2.288818359375E-5" layoutX="130.0" layoutY="99.0" startX="-130.0" startY="2.288818359375E-5" stroke="#b7b7b7" />
+      <JFXButton graphicTextGap="20.0" layoutX="56.0" layoutY="290.0" onAction="#btnBackOnAction" prefHeight="43.0" prefWidth="300.0" style="-fx-background-color: #000000;" text="BACK TO MAIN MENU" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="20.0" />
          </font>
          <graphic>
-            <ImageView fitHeight="17.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="31.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets.icons/back.png" />
+                  <Image url="@../assets.icons/previous.png" />
                </image>
                <effect>
                   <ColorAdjust brightness="1.0" />
