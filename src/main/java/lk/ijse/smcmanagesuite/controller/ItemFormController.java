@@ -22,7 +22,6 @@ import lk.ijse.smcmanagesuite.repository.ItemwithSupplierRepo;
 import lk.ijse.smcmanagesuite.repository.SupplierRepo;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;

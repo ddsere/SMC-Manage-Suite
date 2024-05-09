@@ -1,4 +1,4 @@
 package lk.ijse.smcmanagesuite.controller;
 
-public class CustomerController {
+public class ServiceFormController {
 }
