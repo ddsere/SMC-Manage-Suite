@@ -100,12 +100,12 @@
       </JFXButton>
       <TableView fx:id="tblItem" layoutX="56.0" layoutY="369.0" prefHeight="362.0" prefWidth="1254.0">
          <columns>
-            <TableColumn fx:id="colSupID" prefWidth="157.60000228881836" text="Supplier ID" />
-            <TableColumn fx:id="colSupName" prefWidth="235.2000274658203" text="Supplier Name" />
             <TableColumn fx:id="colCode" prefWidth="182.4000244140625" text="ItemCode" />
             <TableColumn fx:id="colDescription" prefWidth="343.199951171875" text="Description" />
             <TableColumn fx:id="colUnitPrice" prefWidth="188.800048828125" text="Unit Price" />
             <TableColumn fx:id="colQty" prefWidth="149.5999755859375" text="Qty" />
+            <TableColumn fx:id="colSupID" prefWidth="157.60000228881836" text="Supplier ID" />
+            <TableColumn fx:id="colSupName" prefWidth="235.2000274658203" text="Supplier Name" />
          </columns>
       </TableView>
       <JFXComboBox fx:id="cmbSupId" layoutX="1166.0" layoutY="159.0" onAction="#cmbSupplierOnAction" prefHeight="62.0" prefWidth="143.0" style="-fx-background-color: #ffffff;" />

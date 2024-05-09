@@ -63,11 +63,11 @@ public class ItemRepo {
         PreparedStatement pstm = DbConnection.getInstance().getConnection()
                 .prepareStatement(sql);
 
-        pstm.setObject(1, item.getSupId());
+        pstm.setObject(1, item.getItemId());
         pstm.setObject(2, item.getDescription());
         pstm.setObject(3, item.getPrice());
         pstm.setObject(4, item.getQty());
-        pstm.setObject(5, item.getItemId());
+        pstm.setObject(5, item.getSupId());
 
         return pstm.executeUpdate() > 0;
     }

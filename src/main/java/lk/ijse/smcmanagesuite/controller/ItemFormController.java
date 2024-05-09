@@ -12,10 +12,13 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.smcmanagesuite.model.Item;
+import lk.ijse.smcmanagesuite.model.ItemwithSupplier;
 import lk.ijse.smcmanagesuite.model.Supplier;
 import lk.ijse.smcmanagesuite.model.tm.ItemTm;
+import lk.ijse.smcmanagesuite.model.tm.ItemwithSupplierTm;
 import lk.ijse.smcmanagesuite.model.tm.SupplierTm;
 import lk.ijse.smcmanagesuite.repository.ItemRepo;
+import lk.ijse.smcmanagesuite.repository.ItemwithSupplierRepo;
 import lk.ijse.smcmanagesuite.repository.SupplierRepo;
 
 import java.io.IOException;
@@ -53,7 +56,7 @@ public class ItemFormController {
     private AnchorPane root;
 
     @FXML
-    private TableView<ItemTm> tblItem;
+    private TableView<ItemwithSupplierTm> tblItem;
 
     @FXML
     private TextField txtCode;
@@ -69,10 +72,13 @@ public class ItemFormController {
 
     private List<Item> itemList = new ArrayList<>();
 
+    private List<ItemwithSupplier> itemwithSupplierList = new ArrayList<>();
+
     public void initialize() {
-        this.itemList = getAllItems();
+        this.itemwithSupplierList = getAllItems();
         setCellValueFactory();
         loadItemTable();
+        getSupIds();
     }
 
     private void setCellValueFactory() {
@@ -81,31 +87,33 @@ public class ItemFormController {
         colDescription.setCellValueFactory(new PropertyValueFactory<>("Description"));
         colSupID.setCellValueFactory(new PropertyValueFactory<>("SupId"));
         colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("Price"));
+        colSupName.setCellValueFactory(new PropertyValueFactory<>("SupName"));
     }
 
     private void loadItemTable() {
-        ObservableList<ItemTm> tmList = FXCollections.observableArrayList();
+        ObservableList<ItemwithSupplierTm> tmList = FXCollections.observableArrayList();
 
-        for (Item item : itemList) {
-            ItemTm itemTm = new ItemTm(
-                    item.getItemId(),
-                    item.getDescription(),
-                    item.getPrice(),
-                    item.getQty(),
-                    item.getSupId()
+        for (ItemwithSupplier itemwithSupplier : itemwithSupplierList) {
+            ItemwithSupplierTm itemwithSupplierTm = new ItemwithSupplierTm(
+                    itemwithSupplier.getItemId(),
+                    itemwithSupplier.getDescription(),
+                    itemwithSupplier.getPrice(),
+                    itemwithSupplier.getQty(),
+                    itemwithSupplier.getSupId(),
+                    itemwithSupplier.getSupName()
             );
 
-            tmList.add(itemTm);
+            tmList.add(itemwithSupplierTm);
         }
         tblItem.setItems(tmList);
-        ItemTm selectedItem = (ItemTm) tblItem.getSelectionModel().getSelectedItem();
+        ItemwithSupplierTm selectedItem = (ItemwithSupplierTm) tblItem.getSelectionModel().getSelectedItem();
         //System.out.println("selectedItem = " + selectedItem);
     }
 
-    private List<Item> getAllItems() {
-        List<Item> itemList = null;
+    private List<ItemwithSupplier> getAllItems() {
+        List<ItemwithSupplier> itemList = null;
         try {
-            itemList = ItemRepo.getAll();
+            itemList = ItemwithSupplierRepo.getAll();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -129,6 +137,7 @@ public class ItemFormController {
         txtDescription.setText("");
         txtQtyOnHand.setText("");
         txtUnitPrice.setText("");
+        lblSupName.setText("");
     }
 
     @FXML
@@ -194,15 +203,30 @@ public class ItemFormController {
         initialize();
     }
 
+    private void getSupIds() {
+        ObservableList<String> obList = FXCollections.observableArrayList();
+        try {
+            List<String> idList = SupplierRepo.getCodes();
+            for (String id : idList) {
+                obList.add(id);
+            }
+
+            cmbSupId.setItems(obList);
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     @FXML
     void cmbSupplierOnAction(ActionEvent event) {
         String supId = cmbSupId.getValue();
 
         try {
             Supplier supplier = SupplierRepo.searchById(supId);
-
-            lblSupName.setText(supplier.getName());
-
+            if (supplier != null) {
+                lblSupName.setText(supplier.getName());
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

@@ -87,4 +87,20 @@ public class SupplierRepo {
         }
         return supplier;
     }
+
+    public static List<String> getCodes() throws SQLException {
+        String sql = "SELECT Sup_Id FROM Supplier";
+
+        PreparedStatement pstm = DbConnection.getInstance().getConnection()
+                .prepareStatement(sql);
+
+        List<String> idList = new ArrayList<>();
+
+        ResultSet resultSet = pstm.executeQuery();
+
+        while(resultSet.next()) {
+            idList.add(resultSet.getString(1));
+        }
+        return idList;
+    }
 }

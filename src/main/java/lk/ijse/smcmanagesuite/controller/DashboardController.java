@@ -25,8 +25,13 @@ public class DashboardController {
     }
 
     @FXML
-    void btnItemOnAction(ActionEvent event) {
+    void btnItemOnAction(ActionEvent event) throws IOException {
+        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/view/ItemForm.fxml"));
+        Stage stage = (Stage) rootNode.getScene().getWindow();
 
+        stage.setScene(new Scene(anchorPane));
+        stage.setTitle("Item Form");
+        stage.centerOnScreen();
     }
 
     @FXML
