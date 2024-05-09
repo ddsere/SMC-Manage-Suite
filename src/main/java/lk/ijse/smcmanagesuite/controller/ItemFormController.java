@@ -22,6 +22,7 @@ import lk.ijse.smcmanagesuite.repository.ItemwithSupplierRepo;
 import lk.ijse.smcmanagesuite.repository.SupplierRepo;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -69,8 +70,6 @@ public class ItemFormController {
 
     @FXML
     private TextField txtUnitPrice;
-
-    private List<Item> itemList = new ArrayList<>();
 
     private List<ItemwithSupplier> itemwithSupplierList = new ArrayList<>();
 
@@ -138,6 +137,7 @@ public class ItemFormController {
         txtQtyOnHand.setText("");
         txtUnitPrice.setText("");
         lblSupName.setText("");
+        cmbSupId.getSelectionModel().clearSelection();
     }
 
     @FXML
@@ -198,6 +198,7 @@ public class ItemFormController {
                 new Alert(Alert.AlertType.CONFIRMATION, "Item Updated!").show();
             }
         } catch (SQLException e) {
+            System.out.println(e);
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
         initialize();

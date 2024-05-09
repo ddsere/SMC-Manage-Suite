@@ -149,11 +149,11 @@ public class SupplierFormController {
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
-        String name = txtId.getText();
-        String address = txtName.getText();
+        String id = txtId.getText();
+        String name = txtName.getText();
         String tel = txtTel.getText();
 
-        Supplier supplier = new Supplier(name, address, tel);
+        Supplier supplier = new Supplier(id, name, tel);
 
         try {
             boolean isUpdated = SupplierRepo.update(supplier);
