@@ -8,6 +8,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.scene.input.MouseEvent;
 import lk.ijse.smcmanagesuite.db.DbConnection;
@@ -69,14 +71,15 @@ public class LoginFormController {
     }
 
     void navigateToTheDashboard() throws IOException {
-        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/DashboardForm.fxml"));
+        // Load the dashboard FXML into an AnchorPane object
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/DashboardPanel.fxml"));
+        BorderPane dashboardPane = loader.load();
 
-        Scene scene = new Scene(rootNode);
+        // Clear the rootNode's children (assuming your main content is there)
+        rootNode.getChildren().clear();
 
-        Stage stage = (Stage) this.rootNode.getScene().getWindow();
-        stage.setScene(scene);
-        stage.centerOnScreen();
-        stage.setTitle("Dashboard Form");
+        // Add the loaded dashboard pane as the child of rootNode
+        rootNode.getChildren().add(dashboardPane);
     }
 
     @FXML

@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.effect.DropShadow?>
@@ -10,17 +8,13 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.paint.Color?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.Stop?>
-<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="rootNode" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.smcmanagesuite.controller.DashboardFormController">
+<AnchorPane fx:id="dashContentPane" prefHeight="768.0" prefWidth="1044.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.smcmanagesuite.controller.DashboardFormController">
    <children>
-      <ImageView fitHeight="796.0" fitWidth="1058.0" layoutX="306.0" layoutY="-24.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="778.0" fitWidth="1111.0" layoutX="2.0" layoutY="-14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets.images/white-hair-styling-station.jpg" />
          </image>
@@ -28,194 +22,13 @@
             <GaussianBlur radius="11.18" />
          </effect>
       </ImageView>
-      <Rectangle height="303.0" layoutY="465.0" stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0" visible="false" width="1366.0">
-         <fill>
-            <LinearGradient endX="0.4356061111796986" endY="1.0" startX="0.4280303170283635" startY="0.18560611840450403">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="0.7882353067398071" green="0.729411780834198" blue="1.0" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="1.0" green="0.8370370268821716" blue="0.8370370268821716" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </fill></Rectangle>
-      <Rectangle fill="#1b1b1b" height="779.0" layoutX="316.0" layoutY="-9.0" opacity="0.62" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1058.0" />
-      <Rectangle fill="#e4c0ff" height="69.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" visible="false" width="1374.0" />
-      <Rectangle fill="#1e1e25" height="770.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="322.0" />
-      <JFXButton alignment="BASELINE_LEFT" graphicTextGap="30.0" layoutX="12.0" layoutY="414.0" onAction="#btnSupplierOnAction" prefHeight="82.0" prefWidth="299.0" ripplerFill="WHITE" style="-fx-background-color: #1E1E25; -fx-border-color: #1E1E25;" text="Suppliers" textFill="WHITE">
-         <graphic>
-            <ImageView fitHeight="37.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets.icons/delivery-truck.png" />
-               </image>
-               <effect>
-                  <ColorAdjust brightness="1.0" />
-               </effect>
-            </ImageView>
-         </graphic>
-         <font>
-            <Font size="22.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </JFXButton>
-      <JFXButton alignment="BASELINE_LEFT" graphicTextGap="24.0" layoutX="12.0" layoutY="168.0" onAction="#btnCustomerOnAction" prefHeight="82.0" prefWidth="299.0" ripplerFill="WHITE" style="-fx-background-color: #1E1E25; -fx-border-color: #1E1E25;" text="Customers" textFill="WHITE">
-         <graphic>
-            <ImageView fitHeight="35.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets.icons/hand.png" />
-               </image>
-               <effect>
-                  <ColorAdjust brightness="1.0" />
-               </effect>
-            </ImageView>
-         </graphic>
-         <font>
-            <Font size="22.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </JFXButton>
-      <JFXButton alignment="BASELINE_LEFT" graphicTextGap="26.0" layoutX="12.0" layoutY="87.0" onAction="#btnAppointmentOnAction" prefHeight="82.0" prefWidth="299.0" ripplerFill="WHITE" style="-fx-background-color: #1E1E25; -fx-border-color: #1E1E25;" text="Appointments" textFill="WHITE">
-         <font>
-            <Font size="22.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <graphic>
-            <ImageView fitHeight="36.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets.icons/appointment.png" />
-               </image>
-               <effect>
-                  <ColorAdjust brightness="1.0" contrast="-1.0" />
-               </effect>
-            </ImageView>
-         </graphic>
-      </JFXButton>
-      <JFXButton alignment="BASELINE_LEFT" graphicTextGap="26.0" layoutX="12.0" layoutY="332.0" onAction="#btnItemOnAction" prefHeight="82.0" prefWidth="299.0" ripplerFill="WHITE" style="-fx-background-color: #1E1E25; -fx-border-color: #1E1E25;" text="Items" textFill="WHITE">
-         <graphic>
-            <ImageView fitHeight="56.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets.icons/packages.png" />
-               </image>
-               <effect>
-                  <ColorAdjust brightness="1.0" />
-               </effect>
-            </ImageView>
-         </graphic>
-         <font>
-            <Font size="22.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </JFXButton>
-      <JFXButton alignment="BASELINE_LEFT" graphicTextGap="30.0" layoutX="12.0" layoutY="496.0" onAction="#btnOrderOnAction" prefHeight="82.0" prefWidth="299.0" ripplerFill="WHITE" style="-fx-background-color: #1E1E25; -fx-border-color: #1E1E25;" text="Orders" textFill="WHITE">
-         <graphic>
-            <ImageView fitHeight="56.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets.icons/Orders2.png" />
-               </image>
-               <effect>
-                  <ColorAdjust brightness="1.0" />
-               </effect>
-            </ImageView>
-         </graphic>
-         <font>
-            <Font size="22.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </JFXButton>
-      <JFXButton alignment="BASELINE_LEFT" graphicTextGap="25.0" layoutX="12.0" layoutY="250.0" onAction="#btnEmployeeOnAction" prefHeight="82.0" prefWidth="299.0" ripplerFill="WHITE" style="-fx-background-color: #1E1E25; -fx-border-color: #1E1E25;" text="Employees" textFill="WHITE">
-         <font>
-            <Font size="22.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <graphic>
-            <ImageView fitHeight="56.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets.icons/employee.png" />
-               </image>
-               <effect>
-                  <ColorAdjust brightness="1.0" />
-               </effect>
-            </ImageView>
-         </graphic>
-      </JFXButton>
-      <JFXButton alignment="BASELINE_LEFT" graphicTextGap="30.0" layoutX="12.0" layoutY="578.0" onAction="#btnServiceOnAction" prefHeight="82.0" prefWidth="299.0" ripplerFill="WHITE" style="-fx-background-color: #1E1E25; -fx-border-color: #1E1E25;" text="Services" textFill="WHITE">
-         <graphic>
-            <ImageView fitHeight="56.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets.icons/services.png" />
-               </image>
-               <effect>
-                  <ColorAdjust brightness="1.0" />
-               </effect>
-            </ImageView>
-         </graphic>
-         <font>
-            <Font size="22.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </JFXButton>
-      <JFXButton alignment="BASELINE_LEFT" graphicTextGap="30.0" layoutX="12.0" layoutY="660.0" onAction="#btnPlaceOrderOnAction" prefHeight="82.0" prefWidth="299.0" ripplerFill="WHITE" style="-fx-background-color: #1E1E25; -fx-border-color: #1E1E25;" text="Place Order" textFill="WHITE">
-         <graphic>
-            <ImageView fitHeight="56.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets.icons/checkout.png" />
-               </image>
-               <effect>
-                  <ColorAdjust brightness="1.0" />
-               </effect>
-            </ImageView>
-         </graphic>
-         <font>
-            <Font size="22.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </JFXButton>
-      <Circle fill="#1fff4b" layoutX="38.0" layoutY="35.0" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-      <Label fx:id="lblTime" alignment="CENTER" layoutX="662.0" layoutY="145.0" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="96.0" />
-         </font>
-      </Label>
-      <Label fx:id="lblDate" alignment="CENTER" layoutX="735.0" layoutY="265.0" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="36.0" />
-         </font>
-      </Label>
-      <Text fill="WHITE" fontSmoothingType="LCD" layoutX="56.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SMC MANAGE SUITE" wrappingWidth="235.40625">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font>
-      </Text>
-      <Label layoutX="381.0" layoutY="493.0" text="Overview" textFill="WHITE">
+      <Rectangle fill="#1b1b1b" height="768.0" opacity="0.62" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1044.0" />
+      <Label layoutX="52.0" layoutY="488.0" text="Overview" textFill="WHITE">
          <font>
             <Font name="System Bold" size="28.0" />
          </font>
       </Label>
-      <Line endX="854.2000732421875" endY="-0.999969482421875" layoutX="510.0" layoutY="71.0" startX="-186.79998779296875" startY="-0.9999656677246094" stroke="#e4e2e2" strokeWidth="2.0" visible="false" />
-      <Line endX="865.0" endY="-2.0" layoutX="501.0" layoutY="467.0" startX="-179.0" startY="-2.0" stroke="#969696" strokeWidth="2.0" visible="false" />
-      <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="162.0" layoutX="376.0" layoutY="567.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="275.0">
+      <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="162.0" layoutX="47.0" layoutY="562.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="275.0">
          <effect>
             <DropShadow offsetX="1.0" offsetY="1.0">
                <color>
@@ -224,18 +37,17 @@
             </DropShadow>
          </effect>
       </Rectangle>
-      <Label layoutX="411.0" layoutY="678.0" text="Bookings" textFill="#817f7f">
+      <Label layoutX="82.0" layoutY="673.0" text="Bookings" textFill="#817f7f">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Line endX="-4.414276123046875" endY="-0.9999656677246094" layoutX="325.0" layoutY="70.0" startX="-325.0" startY="-0.9999656677246094" stroke="#383838" strokeWidth="2.0" />
-      <Label layoutX="408.0" layoutY="560.0" text="0" textFill="#4145b4">
+      <Label layoutX="79.0" layoutY="555.0" text="0" textFill="#4145b4">
          <font>
             <Font name="System Bold" size="96.0" />
          </font>
       </Label>
-      <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="162.0" layoutX="714.0" layoutY="567.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="275.0">
+      <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="162.0" layoutX="385.0" layoutY="562.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="275.0">
          <effect>
             <DropShadow offsetX="1.0" offsetY="1.0">
                <color>
@@ -244,17 +56,17 @@
             </DropShadow>
          </effect>
       </Rectangle>
-      <Label layoutX="749.0" layoutY="678.0" text="Total Sales" textFill="#817f7f">
+      <Label layoutX="420.0" layoutY="673.0" text="Total Sales" textFill="#817f7f">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="746.0" layoutY="560.0" text="0" textFill="#4145b4">
+      <Label layoutX="417.0" layoutY="555.0" text="0" textFill="#4145b4">
          <font>
             <Font name="System Bold" size="96.0" />
          </font>
       </Label>
-      <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="162.0" layoutX="1047.0" layoutY="564.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="275.0">
+      <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="162.0" layoutX="718.0" layoutY="559.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="275.0">
          <effect>
             <DropShadow offsetX="1.0" offsetY="1.0">
                <color>
@@ -263,36 +75,17 @@
             </DropShadow>
          </effect>
       </Rectangle>
-      <Label layoutX="1082.0" layoutY="675.0" text="Total Customers" textFill="#817f7f">
+      <Label layoutX="753.0" layoutY="670.0" text="Total Customers" textFill="#817f7f">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="1079.0" layoutY="557.0" text="0" textFill="#4145b4">
+      <Label layoutX="750.0" layoutY="552.0" text="0" textFill="#4145b4">
          <font>
             <Font name="System Bold" size="96.0" />
          </font>
       </Label>
-      <Line endX="-100.00001525878906" endY="322.73333740234375" layoutX="189.0" layoutY="405.0" startX="-100.00001525878906" startY="-318.0" stroke="WHITE" visible="false" />
-      <JFXButton graphicTextGap="15.0" layoutX="1199.0" layoutY="13.0" onAction="#btnLogoutOnAction" style="-fx-background-color: black;" text="Logout" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-         <graphic>
-            <ImageView fitHeight="26.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets.icons/log-out.png" />
-               </image>
-               <effect>
-                  <ColorAdjust brightness="1.0" />
-               </effect>
-            </ImageView>
-         </graphic>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </JFXButton>
-      <ImageView fitHeight="40.0" fitWidth="36.0" layoutX="1004.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="40.0" fitWidth="36.0" layoutX="867.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets.icons/profile-user.png" />
          </image>
@@ -300,12 +93,22 @@
             <ColorAdjust brightness="1.0" />
          </effect>
       </ImageView>
-      <Label layoutX="1054.0" layoutY="22.0" text="Daham" textFill="WHITE">
+      <Label layoutX="917.0" layoutY="19.0" text="Daham" textFill="WHITE">
          <font>
             <Font name="Corbel Bold" size="24.0" />
          </font>
       </Label>
-      <Line endX="619.8199462890625" endY="-0.999969482421875" layoutX="702.0" layoutY="476.0" startX="-325.0" startY="-0.9999656677246094" stroke="WHITE" strokeWidth="2.0" />
-      <Line endX="619.8199462890625" endY="-0.999969482421875" layoutX="702.0" layoutY="70.0" startX="-325.0" startY="-0.999969482421875" stroke="WHITE" strokeWidth="2.0" />
+      <Line endX="619.8199462890625" endY="-0.999969482421875" layoutX="373.0" layoutY="471.0" startX="-325.0" startY="-0.9999656677246094" stroke="WHITE" strokeWidth="2.0" />
+      <Line endX="619.8199462890625" endY="-0.999969482421875" layoutX="373.0" layoutY="65.0" startX="-325.0" startY="-0.999969482421875" stroke="WHITE" strokeWidth="2.0" />
+      <Label fx:id="lblTime" alignment="CENTER" layoutX="412.0" layoutY="155.0" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="96.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblDate" alignment="CENTER" layoutX="485.0" layoutY="275.0" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

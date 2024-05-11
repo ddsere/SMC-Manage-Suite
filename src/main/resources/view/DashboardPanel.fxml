@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane fx:id="rootNode" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="767.0" prefWidth="1364.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.smcmanagesuite.controller.DashboardPanelController">
+   <left>
+      <VBox prefHeight="768.0" prefWidth="322.0" BorderPane.alignment="CENTER">
+         <children>
+            <Pane prefHeight="840.0" prefWidth="247.0" style="-fx-background-color: #1e1e25;">
+               <children>
+                  <Circle fill="#1fff4b" layoutX="38.0" layoutY="31.0" radius="9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                  <Text fill="WHITE" fontSmoothingType="LCD" layoutX="58.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SMC MANAGE SUITE" wrappingWidth="235.40625">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Text>
+                  <JFXButton alignment="BASELINE_LEFT" graphicTextGap="30.0" layoutX="12.0" layoutY="166.0" onAction="#btnSupplierOnAction" prefHeight="60.0" prefWidth="299.0" ripplerFill="WHITE" style="-fx-background-color: #1E1E25; -fx-border-color: #1E1E25;" text="Suppliers" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="37.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets.icons/delivery-truck.png" />
+                           </image>
+                           <effect>
+                              <ColorAdjust brightness="1.0" />
+                           </effect>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+                  <JFXButton alignment="BASELINE_LEFT" graphicTextGap="24.0" layoutX="12.0" layoutY="228.0" onAction="#btnCustomerOnAction" prefHeight="60.0" prefWidth="299.0" ripplerFill="WHITE" style="-fx-background-color: #1E1E25; -fx-border-color: #1E1E25;" text="Customers" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets.icons/hand.png" />
+                           </image>
+                           <effect>
+                              <ColorAdjust brightness="1.0" />
+                           </effect>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+                  <JFXButton alignment="BASELINE_LEFT" graphicTextGap="26.0" layoutX="12.0" layoutY="290.0" onAction="#btnAppointmentOnAction" prefHeight="60.0" prefWidth="299.0" ripplerFill="WHITE" style="-fx-background-color: #1E1E25; -fx-border-color: #1E1E25;" text="Appointments" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+                        <ImageView fitHeight="36.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets.icons/appointment.png" />
+                           </image>
+                           <effect>
+                              <ColorAdjust brightness="1.0" contrast="-1.0" />
+                           </effect>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton alignment="BASELINE_LEFT" graphicTextGap="26.0" layoutX="12.0" layoutY="352.0" onAction="#btnItemOnAction" prefHeight="60.0" prefWidth="299.0" ripplerFill="WHITE" style="-fx-background-color: #1E1E25; -fx-border-color: #1E1E25;" text="Items" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="56.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets.icons/packages.png" />
+                           </image>
+                           <effect>
+                              <ColorAdjust brightness="1.0" />
+                           </effect>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+                  <JFXButton alignment="BASELINE_LEFT" graphicTextGap="30.0" layoutX="12.0" layoutY="414.0" onAction="#btnOrderOnAction" prefHeight="60.0" prefWidth="299.0" ripplerFill="WHITE" style="-fx-background-color: #1E1E25; -fx-border-color: #1E1E25;" text="Orders" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="56.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets.icons/Orders2.png" />
+                           </image>
+                           <effect>
+                              <ColorAdjust brightness="1.0" />
+                           </effect>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+                  <JFXButton alignment="BASELINE_LEFT" graphicTextGap="25.0" layoutX="12.0" layoutY="476.0" onAction="#btnEmployeeOnAction" prefHeight="60.0" prefWidth="299.0" ripplerFill="WHITE" style="-fx-background-color: #1E1E25; -fx-border-color: #1E1E25;" text="Employees" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+                        <ImageView fitHeight="56.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets.icons/employee.png" />
+                           </image>
+                           <effect>
+                              <ColorAdjust brightness="1.0" />
+                           </effect>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton alignment="BASELINE_LEFT" graphicTextGap="30.0" layoutX="12.0" layoutY="538.0" onAction="#btnServiceOnAction" prefHeight="60.0" prefWidth="299.0" ripplerFill="WHITE" style="-fx-background-color: #1E1E25; -fx-border-color: #1E1E25;" text="Services" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="56.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets.icons/services.png" />
+                           </image>
+                           <effect>
+                              <ColorAdjust brightness="1.0" />
+                           </effect>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+                  <JFXButton alignment="BASELINE_LEFT" graphicTextGap="30.0" layoutX="12.0" layoutY="600.0" onAction="#btnPlaceOrderOnAction" prefHeight="60.0" prefWidth="299.0" ripplerFill="WHITE" style="-fx-background-color: #1E1E25; -fx-border-color: #1E1E25;" text="Place Order" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="56.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets.icons/checkout.png" />
+                           </image>
+                           <effect>
+                              <ColorAdjust brightness="1.0" />
+                           </effect>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+                  <JFXButton alignment="BASELINE_LEFT" graphicTextGap="30.0" layoutX="12.0" layoutY="104.0" onAction="#btnHomeOnAction" prefHeight="60.0" prefWidth="299.0" ripplerFill="WHITE" style="-fx-background-color: #1E1E25; -fx-border-color: #1E1E25;" text="Home" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="37.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets.icons/home.png" />
+                           </image>
+                           <effect>
+                              <ColorAdjust brightness="1.0" />
+                           </effect>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+                  <Line endX="-4.414276123046875" endY="-0.9999656677246094" layoutX="325.0" layoutY="70.0" startX="-325.0" startY="-0.9999656677246094" stroke="#383838" strokeWidth="2.0" />
+               </children>
+            </Pane>
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <StackPane fx:id="dashContainer" prefHeight="768.0" prefWidth="1044.0" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
