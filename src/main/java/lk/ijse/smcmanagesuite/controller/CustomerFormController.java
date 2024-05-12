@@ -89,16 +89,6 @@ public class CustomerFormController {
         return customerList;
     }
 
-    @FXML
-    void btnBackOnAction(ActionEvent event) throws IOException {
-        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/view/DashboardForm.fxml"));
-        Stage stage = (Stage) root.getScene().getWindow();
-
-        stage.setScene(new Scene(anchorPane));
-        stage.setTitle("Dashboard Form");
-        stage.centerOnScreen();
-    }
-
     private void clearFields() {
         txtName.setText("");
         txtAddress.setText("");

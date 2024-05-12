@@ -70,8 +70,10 @@ public class DashboardPanelController implements Initializable {
         dashContainer.getChildren().setAll(fxml);
     }
 
-    public void btnServiceOnAction(ActionEvent actionEvent) {
-
+    public void btnServiceOnAction(ActionEvent actionEvent) throws IOException {
+        Parent fxml = FXMLLoader.load(getClass().getResource("/view/ServiceForm.fxml"));
+        dashContainer.getChildren().removeAll();
+        dashContainer.getChildren().setAll(fxml);
     }
 
     public void btnPlaceOrderOnAction(ActionEvent actionEvent) {
