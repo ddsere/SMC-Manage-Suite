@@ -5,25 +5,25 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Setter
 @Getter
+@Setter
 @EqualsAndHashCode
 
-public class Item {
-    private String itemId;
+public class ServicewithEmployee {
+    private String serviceId;
     private String description;
     private String price;
-    private String qty;
-    private String supId;
+    private String empId;
+    private String empName;
 
     @Override
     public String toString() {
-        return "Item{" +
-                ", itemId='" + itemId + '\'' +
+        return "Service{" +
+                ", serviceId='" + serviceId + '\'' +
                 ", description='" + description + '\'' +
                 ", price='" + price + '\'' +
-                ", qty='" + qty + '\'' +
-                ", supId='" + supId + '\'' +
+                ", empId='" + empId + '\'' +
+                ", empId='" + empName + '\'' +
                 '}';
     }
 }

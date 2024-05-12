@@ -118,18 +118,6 @@ public class ItemFormController {
         return itemList;
     }
 
-    @FXML
-    void btnBackOnAction(ActionEvent event) throws IOException {
-        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/DashboardForm.fxml"));
-
-        Scene scene = new Scene(rootNode);
-
-        Stage stage = (Stage) this.root.getScene().getWindow();
-        stage.setScene(scene);
-        stage.centerOnScreen();
-        stage.setTitle("Dashboard Form");
-    }
-
     private void clearFields() {
         txtCode.setText("");
         txtDescription.setText("");
