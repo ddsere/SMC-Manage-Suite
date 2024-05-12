@@ -68,22 +68,22 @@ public class SupplierRepo {
         return pstm.executeUpdate() > 0;
     }
 
-    public static Supplier searchById(String id) throws SQLException {
+    public static Supplier searchById(String supId) throws SQLException {
         String sql = "SELECT * FROM Supplier WHERE Sup_Id = ?";
         PreparedStatement pstm = DbConnection.getInstance().getConnection()
                 .prepareStatement(sql);
 
-        pstm.setObject(1, id);
+        pstm.setObject(1, supId);
         ResultSet resultSet = pstm.executeQuery();
 
         Supplier supplier = null;
 
         if (resultSet.next()) {
-            String supId = resultSet.getString(1);
+            String Id = resultSet.getString(1);
             String tel = resultSet.getString(2);
             String name = resultSet.getString(3);
 
-            supplier = new Supplier(supId, name, tel);
+            supplier = new Supplier(Id, name, tel);
         }
         return supplier;
     }

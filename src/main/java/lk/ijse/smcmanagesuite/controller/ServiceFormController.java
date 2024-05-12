@@ -8,15 +8,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.smcmanagesuite.model.Item;
-import lk.ijse.smcmanagesuite.model.ItemwithSupplier;
-import lk.ijse.smcmanagesuite.model.ServicewithEmployee;
+import lk.ijse.smcmanagesuite.model.*;
 import lk.ijse.smcmanagesuite.model.tm.ItemwithSupplierTm;
 import lk.ijse.smcmanagesuite.model.tm.ServicewithEmployeeTm;
-import lk.ijse.smcmanagesuite.repository.ItemRepo;
-import lk.ijse.smcmanagesuite.repository.ItemwithSupplierRepo;
-import lk.ijse.smcmanagesuite.repository.ServicewithEmployeeRepo;
-import lk.ijse.smcmanagesuite.repository.SupplierRepo;
+import lk.ijse.smcmanagesuite.repository.*;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -92,7 +87,7 @@ public class ServiceFormController {
 
         for (ServicewithEmployee servicewithEmployee : servicewithEmployeeList) {
             ServicewithEmployeeTm servicewithEmployeeTm = new ServicewithEmployeeTm(
-                    servicewithEmployee.getEmpId(),
+                    servicewithEmployee.getServiceId(),
                     servicewithEmployee.getDescription(),
                     servicewithEmployee.getPrice(),
                     servicewithEmployee.getEmpId(),
@@ -109,7 +104,7 @@ public class ServiceFormController {
     private void getEmpIds() {
         ObservableList<String> obList = FXCollections.observableArrayList();
         try {
-            List<String> idList = ServicewithEmployeeRepo.getCodes();
+            List<String> idList = EmployeeRepo.getCodes();
             for (String id : idList) {
                 obList.add(id);
             }
@@ -139,9 +134,9 @@ public class ServiceFormController {
         String id = txtId.getText();
 
         try {
-            boolean isDeleted = ServicewithEmployeeRepo.delete(id);
+            boolean isDeleted = ServiceRepo.delete(id);
             if (isDeleted) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Item Deleted!").show();
+                new Alert(Alert.AlertType.CONFIRMATION, "Service Deleted!").show();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -157,12 +152,12 @@ public class ServiceFormController {
         String price = txtPrice.getText();
         String empId = cmbEmpId.getValue();
 
-        ServicewithEmployee servicewithEmployee = new ServicewithEmployee(id,description,price,empId);
+        Service service = new Service(id,description,price,empId);
 
         try {
-            boolean isSaved = ItemRepo.save(item);
+            boolean isSaved = ServiceRepo.save(service);
             if (isSaved) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Item Saved!").show();
+                new Alert(Alert.AlertType.CONFIRMATION, "Service Saved!").show();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -172,17 +167,58 @@ public class ServiceFormController {
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
+        String id = txtId.getText();
+        String description = txtDescription.getText();
+        String price = txtPrice.getText();
+        String empId = cmbEmpId.getValue();
 
+        Service service = new Service(id,description,price,empId);
+
+        try {
+            boolean isUpdated = ServiceRepo.update(service);
+            if (isUpdated) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Service Updated!").show();
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
+        initialize();
     }
 
     @FXML
     void cmbEmployeeOnAction(ActionEvent event) {
+        String empId = cmbEmpId.getValue();
 
+        try {
+            Employee employee = EmployeeRepo.searchById(empId);
+            if (employee != null) {
+                lblEmpName.setText(employee.getName());
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
     void txtSearchOnAction(ActionEvent event) {
+        String id = txtId.getText();
 
+        try {
+            ServicewithEmployee servicewithEmployee = ServicewithEmployeeRepo.searchById(id);
+
+            if (servicewithEmployee != null) {
+                txtId.setText(servicewithEmployee.getServiceId());
+                txtDescription.setText(servicewithEmployee.getDescription());
+                txtPrice.setText(servicewithEmployee.getPrice());
+                lblEmpName.setText(servicewithEmployee.getEmpName());
+
+                String sId = servicewithEmployee.getEmpId();
+                cmbEmpId.setValue(sId);
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
     }
 
 }

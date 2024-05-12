@@ -33,4 +33,27 @@ public class ItemwithSupplierRepo {
         }
         return itemwithSupplierList;
     }
+
+    public static ItemwithSupplier searchById(String code) throws SQLException {
+        String sql = "SELECT i.*, s.Name AS SupplierName FROM Item i INNER JOIN Supplier s ON i.Sup_Id = s.Sup_Id WHERE Item_Id = ?";
+        PreparedStatement pstm = DbConnection.getInstance().getConnection()
+                .prepareStatement(sql);
+
+        pstm.setObject(1, code);
+        ResultSet resultSet = pstm.executeQuery();
+
+        ItemwithSupplier itemwithSupplier = null;
+
+        if (resultSet.next()) {
+            String itemCode = resultSet.getString(1);
+            String description = resultSet.getString(2);
+            String price = resultSet.getString(3);
+            String qty = resultSet.getString(4);
+            String supId = resultSet.getString(5);
+            String supName = resultSet.getString(6);
+
+            itemwithSupplier = new ItemwithSupplier(itemCode, description, price, qty, supId, supName);
+        }
+        return itemwithSupplier;
+    }
 }

@@ -225,13 +225,17 @@ public class ItemFormController {
         String code = txtCode.getText();
 
         try {
-            Item item = ItemRepo.searchById(code);
+            ItemwithSupplier itemwithSupplier = ItemwithSupplierRepo.searchById(code);
 
-            if (item != null) {
-                txtCode.setText(item.getItemId());
-                txtDescription.setText(item.getDescription());
-                txtUnitPrice.setText(item.getPrice());
-                txtQtyOnHand.setText(item.getQty());
+            if (itemwithSupplier != null) {
+                txtCode.setText(itemwithSupplier.getItemId());
+                txtDescription.setText(itemwithSupplier.getDescription());
+                txtUnitPrice.setText(itemwithSupplier.getPrice());
+                txtQtyOnHand.setText(itemwithSupplier.getQty());
+                lblSupName.setText(itemwithSupplier.getSupName());
+
+                String supId = itemwithSupplier.getSupId();
+                cmbSupId.setValue(supId);
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();

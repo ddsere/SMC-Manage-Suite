@@ -137,7 +137,7 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Line endX="904.0" endY="2.288818359375E-5" layoutX="140.0" layoutY="69.0" startX="-130.0" startY="2.288818359375E-5" stroke="#b7b7b7" />
+      <Line endX="904.0" endY="2.288818359375E-5" layoutX="140.0" layoutY="69.0" startX="-140.00001525878906" startY="2.288818359375E-5" stroke="#b7b7b7" />
       <JFXComboBox fx:id="cmbEmpId" layoutX="229.0" layoutY="262.0" onAction="#cmbEmployeeOnAction" prefHeight="62.0" prefWidth="143.0" style="-fx-background-color: #ffffff;" />
       <Label layoutX="229.0" layoutY="224.0" text="Employee ID *" textFill="WHITE">
          <font>
@@ -150,7 +150,7 @@
          </font>
       </Label>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="62.0" layoutX="430.0" layoutY="262.0" stroke="#d9d9d9" strokeType="INSIDE" width="339.0" />
-      <Label fx:id="lblEmpName" layoutX="455.0" layoutY="273.0" prefHeight="1.0" prefWidth="0.0">
+      <Label fx:id="lblEmpName" layoutX="455.0" layoutY="273.0" prefHeight="40.0" prefWidth="302.0">
          <font>
             <Font size="28.0" />
          </font>

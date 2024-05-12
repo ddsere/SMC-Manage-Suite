@@ -152,7 +152,7 @@
          </font>
       </Label>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="62.0" layoutX="408.0" layoutY="259.0" stroke="#d9d9d9" strokeType="INSIDE" width="339.0" />
-      <Label fx:id="lblSupName" layoutX="436.0" layoutY="271.0" prefHeight="1.0" prefWidth="0.0">
+      <Label fx:id="lblSupName" layoutX="436.0" layoutY="271.0" prefHeight="40.0" prefWidth="302.0">
          <font>
             <Font size="28.0" />
          </font>

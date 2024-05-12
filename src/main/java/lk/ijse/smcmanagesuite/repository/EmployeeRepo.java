@@ -93,4 +93,20 @@ public class EmployeeRepo {
         }
         return employee;
     }
+
+    public static List<String> getCodes() throws SQLException {
+        String sql = "SELECT Emp_Id FROM Employee";
+
+        PreparedStatement pstm = DbConnection.getInstance().getConnection()
+                .prepareStatement(sql);
+
+        List<String> idList = new ArrayList<>();
+
+        ResultSet resultSet = pstm.executeQuery();
+
+        while(resultSet.next()) {
+            idList.add(resultSet.getString(1));
+        }
+        return idList;
+    }
 }
