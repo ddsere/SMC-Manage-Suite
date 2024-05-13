@@ -97,3 +97,22 @@ CREATE TABLE Service_orders (
                                 FOREIGN KEY (Order_Id) REFERENCES Orders(Order_Id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
+CREATE TABLE Appointment (
+                             Appointment_Id VARCHAR (10) PRIMARY KEY,
+                             Date DATETIME NOT NULL,  -- Includes both date and time
+                             Customer_Phone VARCHAR (20),
+                             Service_Id VARCHAR (10),
+                             Employee_Id VARCHAR (10),
+                             Status VARCHAR (20),
+                             Time_Slot VARCHAR(10),
+                             FOREIGN KEY (Customer_Phone) REFERENCES Customer(Phone) ON UPDATE CASCADE ON DELETE CASCADE,
+                             FOREIGN KEY (Service_Id) REFERENCES Service(S_Id) ON UPDATE CASCADE ON DELETE CASCADE,
+                             FOREIGN KEY (Employee_Id) REFERENCES Employee(Emp_Id) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+CREATE TABLE Time_Slot (
+                           Slot_Id VARCHAR(10) PRIMARY KEY,
+                           Day VARCHAR(10),
+                           Start_Time TIME,
+                           End_Time TIME
+);

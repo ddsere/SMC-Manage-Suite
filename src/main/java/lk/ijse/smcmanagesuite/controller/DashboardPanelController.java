@@ -50,8 +50,10 @@ public class DashboardPanelController implements Initializable {
         dashContainer.getChildren().setAll(fxml);
     }
 
-    public void btnAppointmentOnAction(ActionEvent actionEvent) {
-
+    public void btnAppointmentOnAction(ActionEvent actionEvent) throws IOException {
+        Parent fxml = FXMLLoader.load(getClass().getResource("/view/AppointmentForm.fxml"));
+        dashContainer.getChildren().removeAll();
+        dashContainer.getChildren().setAll(fxml);
     }
 
     public void btnItemOnAction(ActionEvent actionEvent) throws IOException {
