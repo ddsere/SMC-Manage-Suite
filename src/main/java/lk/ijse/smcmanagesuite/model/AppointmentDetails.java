@@ -15,5 +15,4 @@ public class AppointmentDetails {
     private Date date;
     private String timeSlot;
     private String empName;
-    private String status;
 }

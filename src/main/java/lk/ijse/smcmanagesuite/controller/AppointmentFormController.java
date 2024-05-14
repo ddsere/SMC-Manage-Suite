@@ -12,10 +12,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import lk.ijse.smcmanagesuite.model.*;
 import lk.ijse.smcmanagesuite.model.tm.AppointmentTm;
 import lk.ijse.smcmanagesuite.model.tm.ItemwithSupplierTm;
-import lk.ijse.smcmanagesuite.repository.AppointmentDetailsRepo;
-import lk.ijse.smcmanagesuite.repository.EmployeeRepo;
-import lk.ijse.smcmanagesuite.repository.ItemwithSupplierRepo;
-import lk.ijse.smcmanagesuite.repository.ServiceRepo;
+import lk.ijse.smcmanagesuite.repository.*;
 
 import java.awt.*;
 import java.sql.SQLException;
@@ -57,9 +54,6 @@ public class AppointmentFormController {
     private TableColumn<?, ?> colServName;
 
     @FXML
-    private TableColumn<?, ?> colStatus;
-
-    @FXML
     private TableColumn<?, ?> colTimeSlot;
 
     @FXML
@@ -83,15 +77,12 @@ public class AppointmentFormController {
         this.appointmentList = getAllItems();
         setCellValueFactory();
         loadAppTable();
-        getAppStatus();
         getTimeSlot();
         getCusId();
         getServiceIds();
         getEmployeeId();
     }
 
-    private void getAppStatus() {
-    }
 
     private void getTimeSlot() {
         ObservableList<String> obList = FXCollections.observableArrayList();
@@ -128,10 +119,10 @@ public class AppointmentFormController {
             AppointmentTm appointmentTm = new AppointmentTm(
                     appointmentDetails.getAppId(),
                     appointmentDetails.getCusPhone(),
-                    service.getDescription(),
-                    appointment.getDate(),
-                    appointment.getTimeSlot(),
-                    employee.getName()
+                    appointmentDetails.getSName(),
+                    appointmentDetails.getDate(),
+                    appointmentDetails.getTimeSlot(),
+                    appointmentDetails.getEmpName()
             );
 
             tmList.add(appointmentTm);
@@ -145,7 +136,6 @@ public class AppointmentFormController {
         colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
         colTimeSlot.setCellValueFactory(new PropertyValueFactory<>("timeSlot"));
         colEmpName.setCellValueFactory(new PropertyValueFactory<>("employeeName"));
-        colStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
     }
 
     private List<AppointmentDetails> getAllItems() {
@@ -180,6 +170,18 @@ public class AppointmentFormController {
         String servId = cmbServId.getValue();
         String empId = cmbEmpId.getValue();
         String ts = cmbTimeSlot.getValue();
+
+        Appointment appointment = new Appointment(appId, date, cusPhone, servId, empId, ts);
+
+        try {
+            boolean isSaved = AppointmentRepo.save(appointment);
+            if (isSaved) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Appointment Saved!").show();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
+        initialize();
     }
 
     @FXML

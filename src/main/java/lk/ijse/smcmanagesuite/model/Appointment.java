@@ -1,7 +1,7 @@
 package lk.ijse.smcmanagesuite.model;
 
 import lombok.*;
-import java.sql.Date;
+import java.time.LocalDate;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -9,7 +9,7 @@ import java.sql.Date;
 
 public class Appointment {
     private String appId;
-    private Date date;
+    private LocalDate date;
     private String cusPhone;
     private String servId;
     private String empId;
