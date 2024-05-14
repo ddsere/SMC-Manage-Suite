@@ -5,9 +5,6 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Setter
-@Getter
-@EqualsAndHashCode
 
 public class Item {
     private String itemId;
@@ -15,15 +12,4 @@ public class Item {
     private String price;
     private String qty;
     private String supId;
-
-    @Override
-    public String toString() {
-        return "Item{" +
-                ", itemId='" + itemId + '\'' +
-                ", description='" + description + '\'' +
-                ", price='" + price + '\'' +
-                ", qty='" + qty + '\'' +
-                ", supId='" + supId + '\'' +
-                '}';
-    }
 }

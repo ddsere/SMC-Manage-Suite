@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -17,7 +18,7 @@
 
 <AnchorPane prefHeight="768.0" prefWidth="1044.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.smcmanagesuite.controller.AppointmentFormController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#060116" height="768.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1044.0" />
+      <Rectangle fill="#060116" height="768.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1044.0" />
       <Label layoutX="33.0" layoutY="8.0" text="Manage Appointemnts" textFill="WHITE">
          <font>
             <Font size="36.0" />
@@ -32,14 +33,13 @@
           <TableColumn fx:id="colDate" prefWidth="133.86668395996094" text="Date" />
             <TableColumn fx:id="colTimeSlot" prefWidth="119.73336791992188" text="Time Slot" />
             <TableColumn fx:id="colEmpName" minWidth="0.0" prefWidth="157.06658935546875" text="Assigned Employee" />
-            <TableColumn fx:id="colStatus" minWidth="0.0" prefWidth="101.5999755859375" text="Status" />
             <TableColumn fx:id="colAction" minWidth="0.0" prefWidth="154.39993896484373" text="Action" />
         </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <TextField fx:id="txtAppId" layoutX="33.0" layoutY="129.0" prefHeight="62.0" prefWidth="184.0">
+      <TextField fx:id="txtAppId" layoutX="33.0" layoutY="129.0" onAction="#txtSearchOnAction" prefHeight="62.0" prefWidth="184.0">
          <font>
             <Font size="28.0" />
          </font>
@@ -49,11 +49,6 @@
             <Font size="22.0" />
          </font>
       </Label>
-      <TextField fx:id="txtDate" layoutX="33.0" layoutY="259.0" prefHeight="62.0" prefWidth="274.0">
-         <font>
-            <Font size="28.0" />
-         </font>
-      </TextField>
       <Label layoutX="33.0" layoutY="221.0" text="Date *" textFill="WHITE">
          <font>
             <Font size="22.0" />
@@ -77,12 +72,6 @@
          </font>
       </Label>
       <JFXComboBox fx:id="cmbEmpId" layoutX="750.0" layoutY="129.0" onAction="#cmbEmpIdOnAction" prefHeight="62.0" prefWidth="143.0" style="-fx-background-color: white;" />
-      <Label layoutX="605.0" layoutY="221.0" text="Status *" textFill="WHITE">
-         <font>
-            <Font size="22.0" />
-         </font>
-      </Label>
-      <JFXComboBox fx:id="cmbStatus" layoutX="605.0" layoutY="259.0" onAction="#cmbStatusOnAction" prefHeight="62.0" prefWidth="214.0" style="-fx-background-color: white;" />
       <Label layoutX="366.0" layoutY="221.0" text="Time Slot *" textFill="WHITE">
          <font>
             <Font size="22.0" />
@@ -183,5 +172,6 @@
             </ImageView>
          </graphic>
       </JFXButton>
+      <DatePicker fx:id="txtDate" layoutX="33.0" layoutY="259.0" prefHeight="62.0" prefWidth="274.0" />
    </children>
 </AnchorPane>
