@@ -20,8 +20,6 @@ public class DashboardFormController {
 
     private volatile boolean stop = false;
 
-
-
     public void initialize(){
         timeNow();
 

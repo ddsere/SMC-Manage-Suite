@@ -63,8 +63,10 @@ public class DashboardPanelController implements Initializable {
         dashContainer.getChildren().setAll(fxml);
     }
 
-    public void btnOrderOnAction(ActionEvent actionEvent) {
-
+    public void btnOrderOnAction(ActionEvent actionEvent) throws IOException {
+        Parent fxml = FXMLLoader.load(getClass().getResource("/view/OrderForm.fxml"));
+        dashContainer.getChildren().removeAll();
+        dashContainer.getChildren().setAll(fxml);
     }
 
     public void btnEmployeeOnAction(ActionEvent actionEvent) throws IOException {
@@ -79,7 +81,9 @@ public class DashboardPanelController implements Initializable {
         dashContainer.getChildren().setAll(fxml);
     }
 
-    public void btnPlaceOrderOnAction(ActionEvent actionEvent) {
-
+    public void btnPlaceOrderOnAction(ActionEvent actionEvent) throws IOException {
+        Parent fxml = FXMLLoader.load(getClass().getResource("/view/PlaceOrderForm.fxml"));
+        dashContainer.getChildren().removeAll();
+        dashContainer.getChildren().setAll(fxml);
     }
 }

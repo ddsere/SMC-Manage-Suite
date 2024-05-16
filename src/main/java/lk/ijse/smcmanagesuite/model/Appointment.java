@@ -14,4 +14,5 @@ public class Appointment {
     private String servId;
     private String empId;
     private String timeSlot;
+    private String price;
 }

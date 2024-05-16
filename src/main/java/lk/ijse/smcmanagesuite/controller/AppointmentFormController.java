@@ -5,14 +5,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
 import lk.ijse.smcmanagesuite.model.*;
 import lk.ijse.smcmanagesuite.model.tm.AppointmentTm;
 import lk.ijse.smcmanagesuite.repository.*;
@@ -74,6 +70,7 @@ public class AppointmentFormController {
     private DatePicker txtDate;
 
     private List<AppointmentDetails> appointmentList = new ArrayList<>();
+    private String price;
 
     public void initialize() {
         this.appointmentList = getAllItems();
@@ -194,7 +191,15 @@ public class AppointmentFormController {
         String empId = cmbEmpId.getValue();
         String ts = cmbTimeSlot.getValue();
 
-        Appointment appointment = new Appointment(appId, date, cusPhone, servId, empId, ts);
+
+        try {
+            price = ServiceRepo.getPrice(servId);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        Appointment appointment = new Appointment(appId, date, cusPhone, servId, empId, ts, price);
+        System.out.println(appointment.toString());
 
         try {
             boolean isSaved = AppointmentRepo.save(appointment);
@@ -203,7 +208,6 @@ public class AppointmentFormController {
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-            System.out.println(e);
         }
         initialize();
     }
@@ -233,7 +237,7 @@ public class AppointmentFormController {
         String empId = cmbEmpId.getValue();
         String ts = cmbTimeSlot.getValue();
 
-        Appointment appointment = new Appointment(appId, date, cusPhone, servId, empId, ts);
+        Appointment appointment = new Appointment(appId, date, cusPhone, servId, empId, ts, price);
 
         try {
             boolean isUpdated = AppointmentRepo.update(appointment);
@@ -247,7 +251,64 @@ public class AppointmentFormController {
     }
 
     public void btnCompleteOnAction(ActionEvent actionEvent) {
+        String appId = txtAppId.getText();
+        String servId = cmbServId.getValue();
+        String price;
 
+        try {
+            price = ServiceRepo.getPrice(servId);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        String cusPhone = txtCusPhone.getText();
+        String cusName = lblCusName.getText();
+        LocalDate date = LocalDate.now();
+
+        String orderId = loadNextOrderId();
+        var order = new Order(orderId, date, price, cusPhone, cusName);
+
+        String status = "Completed";
+        AppointmentStatus appointmentStatus = new AppointmentStatus(status, appId);
+
+        PlaceOrder po = new PlaceOrder(order, appointmentStatus);
+        System.out.println(po.toString());
+        try {
+            boolean isPlaced = PlaceOrderRepo.placeOrder(po);
+            System.out.println(isPlaced);
+            if(isPlaced) {
+                new Alert(Alert.AlertType.CONFIRMATION, "order placed!").show();
+            } else {
+                new Alert(Alert.AlertType.WARNING, "order not placed!").show();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
+    }
+
+    private String loadNextOrderId() {
+        try {
+            String currentId = OrderRepo.currentId();
+            String nextId = nextId(currentId);
+
+            String orderId = (nextId);
+            return orderId;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private String nextId(String currentId) {
+        if (currentId != null) {
+            String[] split = currentId.split("D");
+            int id = Integer.parseInt(split[1]);
+            id++;
+
+            // Format the ID with leading zeros using String.format
+            return "D" + String.format("%03d", id);
+        } else {
+            return "D001";
+        }
     }
 
     @FXML
@@ -307,9 +368,5 @@ public class AppointmentFormController {
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
-    }
-
-    public void btnAddOnAction(ActionEvent actionEvent) throws IOException {
-
     }
 }

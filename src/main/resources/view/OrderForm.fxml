@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane fx:id="root" prefHeight="768.0" prefWidth="1044.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.smcmanagesuite.controller.OrderFormController">
+   <children>
+      <Rectangle fill="#060116" height="768.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1044.0" />
+      <Label layoutX="33.0" layoutY="8.0" text="Orders Overview" textFill="WHITE">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Line endX="906.300048828125" endY="2.288818359375E-5" layoutX="130.0" layoutY="69.0" startX="-130.0" startY="2.288818359375E-5" stroke="#b7b7b7" />
+      <TableView fx:id="tblOrder" layoutX="23.0" layoutY="98.0" prefHeight="646.0" prefWidth="995.0">
+        <columns>
+          <TableColumn fx:id="colOrderId" prefWidth="111.46667861938477" text="Order ID" />
+          <TableColumn fx:id="colDate" prefWidth="177.33333587646484" text="Date" />
+            <TableColumn fx:id="colCusName" prefWidth="341.5999450683594" text="Customer Name" />
+            <TableColumn fx:id="colCusPhone" prefWidth="212.79998779296875" text="Customer Phone" />
+            <TableColumn fx:id="colAmount" prefWidth="154.13323974609375" text="Amount" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

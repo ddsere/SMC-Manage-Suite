@@ -1,9 +1,7 @@
 package lk.ijse.smcmanagesuite.repository;
 
 import lk.ijse.smcmanagesuite.db.DbConnection;
-import lk.ijse.smcmanagesuite.model.Item;
 import lk.ijse.smcmanagesuite.model.Service;
-import lk.ijse.smcmanagesuite.model.ServicewithEmployee;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -85,5 +83,20 @@ public class ServiceRepo {
             idList.add(resultSet.getString(1));
         }
         return idList;
+    }
+
+    public static String getPrice(String servId) throws SQLException {
+        String sql = "SELECT Price FROM Service WHERE S_Id = ?";
+
+        PreparedStatement pstm = DbConnection.getInstance().getConnection()
+                .prepareStatement(sql);
+
+        pstm.setObject(1, servId);
+        ResultSet resultSet = pstm.executeQuery();
+        String price = null;
+        while (resultSet.next()) {
+            price = String.valueOf(resultSet.getDouble(1));
+        }
+        return price;
     }
 }

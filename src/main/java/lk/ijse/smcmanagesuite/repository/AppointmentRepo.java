@@ -3,13 +3,27 @@ package lk.ijse.smcmanagesuite.repository;
 import com.sun.javafx.css.CssUtil;
 import lk.ijse.smcmanagesuite.db.DbConnection;
 import lk.ijse.smcmanagesuite.model.Appointment;
+import lk.ijse.smcmanagesuite.model.AppointmentStatus;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class AppointmentRepo {
+
+    public static boolean save(AppointmentStatus appointmentStatus) throws SQLException {
+        String sql = "UPDATE Appointment SET Status = ? WHERE Appointment_id = ?";
+        PreparedStatement pstm = DbConnection.getInstance().getConnection()
+                .prepareStatement(sql);
+        pstm.setString(1, appointmentStatus.getStatus());
+        pstm.setString(2, appointmentStatus.getId());
+
+        System.out.println(pstm);
+
+        return pstm.executeUpdate() > 0;
+    }
+
     public static boolean save(Appointment appointment) throws SQLException {
-        String sql = "INSERT INTO Appointment VALUES(?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Appointment VALUES(?, ?, ?, ?, ?, ?, ?,'Pending')";
         PreparedStatement pstm = DbConnection.getInstance().getConnection()
                 .prepareStatement(sql);
 
@@ -21,6 +35,7 @@ public class AppointmentRepo {
         pstm.setObject(4, appointment.getServId());
         pstm.setObject(5, appointment.getEmpId());
         pstm.setObject(6, appointment.getTimeSlot());
+        pstm.setObject(7, appointment.getPrice());
 
         return pstm.executeUpdate() > 0;
     }
@@ -41,6 +56,7 @@ public class AppointmentRepo {
                 "    Service_Id = ?,\n" +
                 "    Employee_Id = ?,\n" +
                 "    Time_Slot = ?\n" +
+                "    Price = ?\n" +
                 "WHERE Appointment_Id = ?;\n";
 
         PreparedStatement pstm = DbConnection.getInstance().getConnection()
@@ -51,6 +67,7 @@ public class AppointmentRepo {
         pstm.setObject(3, appointment.getEmpId());
         pstm.setObject(4, appointment.getTimeSlot());
         pstm.setObject(5, appointment.getAppId());
+        pstm.setObject(6, appointment.getPrice());
 
         return pstm.executeUpdate() > 0;
     }

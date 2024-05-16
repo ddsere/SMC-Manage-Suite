@@ -48,7 +48,7 @@
             <Font size="22.0" />
          </font>
       </Label>
-      <Label layoutX="269.0" layoutY="91.0" text="Customer Phone *" textFill="WHITE">
+      <Label layoutX="317.0" layoutY="91.0" text="Customer Phone *" textFill="WHITE">
          <font>
             <Font size="22.0" />
          </font>
@@ -94,7 +94,7 @@
          </font>
       </Label>
       <DatePicker fx:id="txtDate" layoutX="33.0" layoutY="245.0" prefHeight="62.0" prefWidth="274.0" />
-      <TextField fx:id="txtCusPhone" layoutX="269.0" layoutY="125.0" onAction="#txtSearchOnAction" prefHeight="62.0" prefWidth="274.0">
+      <TextField fx:id="txtCusPhone" layoutX="317.0" layoutY="125.0" onAction="#txtSearchOnAction" prefHeight="62.0" prefWidth="289.0">
          <font>
             <Font size="28.0" />
          </font></TextField>
@@ -109,7 +109,7 @@
             <Font size="28.0" />
          </font>
       </Label>
-      <TextField fx:id="txtAppId" layoutX="33.0" layoutY="125.0" prefHeight="62.0" prefWidth="177.0">
+      <TextField fx:id="txtAppId" layoutX="33.0" layoutY="125.0" prefHeight="62.0" prefWidth="217.0">
          <font>
             <Font size="28.0" />
          </font></TextField>
@@ -202,21 +202,6 @@
                </effect>
             </ImageView>
          </graphic>
-      </JFXButton>
-      <JFXButton contentDisplay="CENTER" graphicTextGap="0.0" layoutX="543.0" layoutY="125.0" onAction="#btnAddOnAction" prefHeight="62.0" prefWidth="62.0" style="-fx-background-color: #591D87; -fx-background-radius: 0;" text="New" textFill="#ffffff00">
-         <graphic>
-            <ImageView fitHeight="24.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets.icons/add.png" />
-               </image>
-               <effect>
-                  <ColorAdjust brightness="1.0" />
-               </effect>
-            </ImageView>
-         </graphic>
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
       </JFXButton>
    </children>
 </AnchorPane>

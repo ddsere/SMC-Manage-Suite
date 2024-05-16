@@ -1,63 +1,228 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.smcmanagesuite.controller.PlaceOrderFormController">
+<AnchorPane fx:id="root" prefHeight="768.0" prefWidth="1044.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.smcmanagesuite.controller.PlaceOrderFormController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="768.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1366.0">
-         <fill>
-            <LinearGradient endX="1.0" endY="1.0" startX="1.0">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="0.9058823585510254" green="0.9176470637321472" blue="1.0" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.9333333373069763" green="0.9372549057006836" blue="1.0" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </fill>
-      </Rectangle>
-      <Label layoutX="27.0" layoutY="13.0" text="Place an Order" textFill="#030303">
+      <Rectangle fill="#060116" height="768.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1044.0" />
+      <Label layoutX="33.0" layoutY="8.0" text="Place an Order" textFill="WHITE">
          <font>
-            <Font size="48.0" />
+            <Font size="36.0" />
          </font>
       </Label>
-      <JFXButton graphicTextGap="20.0" layoutX="56.0" layoutY="290.0" onAction="#btnBackOnAction" prefHeight="43.0" prefWidth="300.0" style="-fx-background-color: #000000;" text="BACK TO MAIN MENU" textFill="WHITE">
+      <Line endX="906.300048828125" endY="2.288818359375E-5" layoutX="130.0" layoutY="69.0" startX="-130.0" startY="2.288818359375E-5" stroke="#b7b7b7" />
+      <Label layoutX="785.0" layoutY="87.0" text="Order ID :" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblOrderID" layoutX="895.0" layoutY="87.0" text="D001" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="23.0" layoutY="213.0" text="Select Service :" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <JFXComboBox fx:id="cmbSId" layoutX="183.0" layoutY="207.0" onAction="#cmbSIdOnAction" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #060116;" />
+      <Label layoutX="762.0" layoutY="126.0" text="Order Date :" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblOrderDate" layoutX="895.0" layoutY="126.0" text="2024-05-17" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="23.0" layoutY="83.0" text="Customer Phone *" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtCusPhone" layoutX="22.0" layoutY="116.0" onAction="#txtSearchOnAction" prefHeight="40.0" prefWidth="204.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </TextField>
+      <TableView fx:id="tblCartItem" layoutX="23.0" layoutY="524.0" prefHeight="174.0" prefWidth="485.0">
+        <columns>
+          <TableColumn fx:id="colItemId" prefWidth="64.53332901000977" text="Item ID" />
+          <TableColumn fx:id="colItemName" prefWidth="157.86669158935547" text="Description" />
+            <TableColumn fx:id="colUnitPrice" prefWidth="84.79995727539062" text="Unit Price" />
+            <TableColumn fx:id="colQty" prefWidth="69.60009765625" text="Qty" />
+            <TableColumn fx:id="colItemCartAction" prefWidth="110.39999389648438" text="Action" />
+        </columns>
+      </TableView>
+      <Label layoutX="23.0" layoutY="375.0" text="Select Item :" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <JFXComboBox fx:id="cmbItemId" layoutX="183.0" layoutY="358.0" onAction="#cmbItemIdOnAction" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #060116;" />
+      <TextField fx:id="txtQtyBuy" layoutX="600.0" layoutY="438.0" prefHeight="24.0" prefWidth="122.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </TextField>
+      <Label layoutX="22.0" layoutY="281.0" text="Description :" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Line endX="112.03326416015625" endY="1.52587890625E-5" layoutX="284.0" layoutY="317.0" opacity="0.4" startX="-127.9666748046875" startY="1.52587890625E-5" stroke="WHITE" />
+      <Label layoutX="537.0" layoutY="449.0" text="Qty :" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblSName" layoutX="157.0" layoutY="281.0" text="Description" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="361.0" layoutY="372.0" text="Description :" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Line endX="96.83331298828125" endY="3.0517578125E-5" layoutX="623.0" layoutY="408.0" opacity="0.4" startX="-127.9666748046875" startY="1.52587890625E-5" stroke="WHITE" />
+      <Label fx:id="lblItemName" layoutX="496.0" layoutY="372.0" text="Description" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <JFXButton buttonType="RAISED" graphicTextGap="14.0" layoutX="818.0" layoutY="711.0" onAction="#btnPlaceOrderOnAction" prefHeight="43.0" prefWidth="200.0" style="-fx-background-color: #0d660d;" text="PLACE ORDER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
          <graphic>
-            <ImageView fitHeight="31.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="20.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets.icons/previous.png" />
+                  <Image url="@../assets.icons/save.png" />
                </image>
                <effect>
                   <ColorAdjust brightness="1.0" />
                </effect>
             </ImageView>
          </graphic>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" graphicTextGap="14.0" layoutX="815.0" layoutY="407.0" onAction="#btnAddItemToCartOnAction" prefHeight="43.0" prefWidth="200.0" style="-fx-background-color: #591D87;" text="ADD ITEM" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
+         <graphic>
+            <ImageView fitHeight="26.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets.icons/packages.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="1.0" />
+               </effect>
+            </ImageView>
+         </graphic>
       </JFXButton>
-      <Line endX="1236.0" endY="2.288818359375E-5" layoutX="130.0" layoutY="99.0" startX="-130.0" startY="2.288818359375E-5" stroke="#b7b7b7" />
+      <Label layoutX="23.0" layoutY="450.0" text="Unit Price :" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Line endX="-35.69996643066406" layoutX="268.0" layoutY="486.0" opacity="0.4" startX="-127.9666748046875" startY="1.52587890625E-5" stroke="WHITE" />
+      <Label fx:id="lblItemUnitPrice" layoutX="141.0" layoutY="450.0" text="2500.00" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="284.0" layoutY="448.0" text="Qty On Hand :" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Line endX="-71.50003051757812" layoutX="562.0" layoutY="484.0" opacity="0.4" startX="-127.9666748046875" startY="1.52587890625E-5" stroke="WHITE" />
+      <Label fx:id="lblItemQtyOnHand" layoutX="435.0" layoutY="448.0" text="300" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <Line endX="886.300048828125" endY="3.0517578125E-5" layoutX="130.0" layoutY="349.0" opacity="0.17" startX="-107.8333511352539" startY="3.0517578125E-5" stroke="#b7b7b7" />
+      <Label layoutX="352.0" layoutY="213.0" text="Service Charge :" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Line endX="-32.7667236328125" endY="3.0517578125E-5" layoutX="648.0" layoutY="249.0" opacity="0.4" startX="-127.9666748046875" startY="1.52587890625E-5" stroke="WHITE" />
+      <Label fx:id="lblSPrice" layoutX="521.0" layoutY="213.0" text="2500.00" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <JFXButton buttonType="RAISED" graphicTextGap="14.0" layoutX="815.0" layoutY="243.0" onAction="#btnAddServiceToCartOnAction" prefHeight="43.0" prefWidth="200.0" style="-fx-background-color: #591D87;" text="ADD SERVICE" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="26.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets.icons/checkout.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="1.0" />
+               </effect>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <TableView fx:id="tblCartService" layoutX="532.0" layoutY="524.0" prefHeight="174.0" prefWidth="485.0">
+         <columns>
+            <TableColumn fx:id="colSId" prefWidth="75.0" text="Service ID" />
+            <TableColumn fx:id="colSName" prefWidth="219.4666748046875" text="Description" />
+            <TableColumn fx:id="colSPrice" prefWidth="88.53338623046875" text="Price" />
+            <TableColumn fx:id="colSCartAction" prefWidth="104.2666015625" text="Action" />
+         </columns>
+      </TableView>
+      <Label layoutX="256.0" layoutY="118.0" text="Customer Name :" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Line endX="112.03326416015625" endY="1.52587890625E-5" layoutX="562.0" layoutY="155.0" opacity="0.4" startX="-127.9666748046875" startY="1.52587890625E-5" stroke="WHITE" />
+      <Label fx:id="lblCusName" layoutX="435.0" layoutY="119.0" text="DHANUSHKA" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="22.0" layoutY="717.0" text="Net Total :" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblNetTotal" layoutX="132.0" layoutY="717.0" text="2500.00" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
