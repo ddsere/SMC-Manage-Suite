@@ -16,6 +16,7 @@ import java.util.logging.Logger;
 
 public class DashboardPanelController implements Initializable {
     public BorderPane rootNode;
+
     @FXML
     private StackPane dashContainer;
 

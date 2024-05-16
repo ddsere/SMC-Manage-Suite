@@ -5,14 +5,19 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 import lk.ijse.smcmanagesuite.model.*;
 import lk.ijse.smcmanagesuite.model.tm.AppointmentTm;
 import lk.ijse.smcmanagesuite.repository.*;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -304,4 +309,7 @@ public class AppointmentFormController {
         }
     }
 
+    public void btnAddOnAction(ActionEvent actionEvent) throws IOException {
+
+    }
 }
