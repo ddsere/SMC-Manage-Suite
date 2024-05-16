@@ -12,7 +12,6 @@ import java.util.List;
 
 public class CustomerRepo {
     public static boolean save(Customer customer) throws SQLException {
-//        In here you can now save your customer
         String sql = "INSERT INTO Customer VALUES(?, ?, ?)";
         PreparedStatement pstm = DbConnection.getInstance().getConnection()
                 .prepareStatement(sql);
@@ -23,12 +22,6 @@ public class CustomerRepo {
 
         return pstm.executeUpdate() > 0;
 
-        /*int affectedRows = pstm.executeUpdate();
-        if (affectedRows > 0) {
-            return true;
-        } else {
-            return false;
-        }*/
     }
 
     public static boolean update(Customer customer) throws SQLException {
@@ -95,7 +88,7 @@ public class CustomerRepo {
     }
 
     public static List<String> getTel() throws SQLException {
-        String sql = "SELECT Phone FROM customers";
+        String sql = "SELECT Phone FROM Customer";
 
         Connection connection = DbConnection.getInstance().getConnection();
         ResultSet resultSet = connection.prepareStatement(sql).executeQuery();

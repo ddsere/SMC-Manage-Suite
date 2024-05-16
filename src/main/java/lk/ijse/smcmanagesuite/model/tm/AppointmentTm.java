@@ -9,7 +9,7 @@ import java.sql.Date;
 
 public class AppointmentTm {
     private String appId;
-    private String cusPhone;
+    private String cusName;
     private String sName;
     private Date date;
     private String timeSlot;

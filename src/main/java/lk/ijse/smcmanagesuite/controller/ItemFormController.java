@@ -7,7 +7,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.AnchorPane;
 import lk.ijse.smcmanagesuite.model.Item;
 import lk.ijse.smcmanagesuite.model.ItemwithSupplier;
 import lk.ijse.smcmanagesuite.model.Supplier;
@@ -45,9 +44,6 @@ public class ItemFormController {
 
     @FXML
     private Label lblSupName;
-
-    @FXML
-    private AnchorPane root;
 
     @FXML
     private TableView<ItemwithSupplierTm> tblItem;
@@ -227,9 +223,7 @@ public class ItemFormController {
                 txtUnitPrice.setText(itemwithSupplier.getPrice());
                 txtQtyOnHand.setText(itemwithSupplier.getQty());
                 lblSupName.setText(itemwithSupplier.getSupName());
-
-                String supId = itemwithSupplier.getSupId();
-                cmbSupId.setValue(supId);
+                cmbSupId.setValue(itemwithSupplier.getSupId());
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();

@@ -8,6 +8,7 @@ import lk.ijse.smcmanagesuite.model.ServicewithEmployee;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ServiceRepo {
@@ -68,5 +69,21 @@ public class ServiceRepo {
             service = new Service(sId, description, price, empId);
         }
         return service;
+    }
+
+    public static List<String> getIds() throws SQLException {
+        String sql = "SELECT S_Id FROM Service";
+
+        PreparedStatement pstm = DbConnection.getInstance().getConnection()
+                .prepareStatement(sql);
+
+        List<String> idList = new ArrayList<>();
+
+        ResultSet resultSet = pstm.executeQuery();
+
+        while(resultSet.next()) {
+            idList.add(resultSet.getString(1));
+        }
+        return idList;
     }
 }
