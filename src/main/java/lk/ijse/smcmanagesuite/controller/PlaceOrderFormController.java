@@ -181,7 +181,6 @@ public class PlaceOrderFormController {
             if(type.orElse(no) == yes) {
                 int selectedIndex = tblCartItem.getSelectionModel().getSelectedIndex();
                 itemCartList.remove(selectedIndex);
-
                 tblCartItem.refresh();
                 calculateNetTotal();
             }
