@@ -14,6 +14,7 @@ import lk.ijse.smcmanagesuite.model.tm.AppointmentTm;
 import lk.ijse.smcmanagesuite.repository.*;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -263,7 +264,7 @@ public class AppointmentFormController {
 
         String cusPhone = txtCusPhone.getText();
         String cusName = lblCusName.getText();
-        LocalDate date = LocalDate.now();
+        Date date = Date.valueOf(LocalDate.now());
 
         String orderId = loadNextOrderId();
         var order = new Order(orderId, date, price, cusPhone, cusName);

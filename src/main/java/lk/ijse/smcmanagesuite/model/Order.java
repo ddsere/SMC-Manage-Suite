@@ -2,6 +2,7 @@ package lk.ijse.smcmanagesuite.model;
 
 import lombok.*;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 @AllArgsConstructor
@@ -10,7 +11,7 @@ import java.time.LocalDate;
 
 public class Order {
     private String orderId;
-    private LocalDate date;
+    private Date date;
     private String price;
     private String cusPhone;
     private String cusName;

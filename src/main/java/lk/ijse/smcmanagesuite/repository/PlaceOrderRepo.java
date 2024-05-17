@@ -6,6 +6,7 @@ import lk.ijse.smcmanagesuite.model.PlaceOrder;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.sql.SQLOutput;
 
 public class PlaceOrderRepo {
     public static boolean placeOrder(PlaceOrder po) throws SQLException {
@@ -15,8 +16,10 @@ public class PlaceOrderRepo {
         try {
             boolean isOrderSaved = OrderRepo.save(po.getOrder());
             if (isOrderSaved) {
+                System.out.println("order saved");
                 boolean isUpdateAppStatus = AppointmentRepo.save(po.getAppoStatus());
                 if (isUpdateAppStatus) {
+                    System.out.println("isupdatstatue " + isUpdateAppStatus);
                         connection.commit();
                         return true;
                 }
@@ -24,6 +27,7 @@ public class PlaceOrderRepo {
             connection.rollback();
             return false;
         } catch (Exception e) {
+            e.printStackTrace();
             connection.rollback();
             return false;
         } finally {
