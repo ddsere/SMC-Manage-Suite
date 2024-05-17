@@ -91,7 +91,6 @@ public class LoginFormController {
         stage.setScene(scene);
 
         stage.setTitle("Registration Form");
-
         stage.show();
     }
 }

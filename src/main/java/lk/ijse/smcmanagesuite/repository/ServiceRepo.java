@@ -85,7 +85,7 @@ public class ServiceRepo {
         return idList;
     }
 
-    public static String getPrice(String servId) throws SQLException {
+    public static double getPrice(String servId) throws SQLException {
         String sql = "SELECT Price FROM Service WHERE S_Id = ?";
 
         PreparedStatement pstm = DbConnection.getInstance().getConnection()
@@ -93,9 +93,9 @@ public class ServiceRepo {
 
         pstm.setObject(1, servId);
         ResultSet resultSet = pstm.executeQuery();
-        String price = null;
+        double price = 0;
         while (resultSet.next()) {
-            price = String.valueOf(resultSet.getDouble(1));
+            price = resultSet.getDouble(1);
         }
         return price;
     }

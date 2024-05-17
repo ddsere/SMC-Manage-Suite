@@ -71,7 +71,7 @@ public class AppointmentFormController {
     private DatePicker txtDate;
 
     private List<AppointmentDetails> appointmentList = new ArrayList<>();
-    private String price;
+    private double price;
 
     public void initialize() {
         this.appointmentList = getAllItems();
@@ -254,7 +254,7 @@ public class AppointmentFormController {
     public void btnCompleteOnAction(ActionEvent actionEvent) {
         String appId = txtAppId.getText();
         String servId = cmbServId.getValue();
-        String price;
+        double price;
 
         try {
             price = ServiceRepo.getPrice(servId);

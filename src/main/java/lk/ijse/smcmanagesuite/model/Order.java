@@ -12,7 +12,7 @@ import java.time.LocalDate;
 public class Order {
     private String orderId;
     private Date date;
-    private String price;
+    private double amount;
     private String cusPhone;
     private String cusName;
 
