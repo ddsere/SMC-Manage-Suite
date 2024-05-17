@@ -107,6 +107,11 @@ public class PlaceOrderFormController {
         loadNextOrderId();
         setDate();
         getServiceId();
+        getItemId();
+    }
+
+    private void getItemId() {
+
     }
 
     private void getServiceId() {
