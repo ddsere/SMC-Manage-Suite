@@ -1,5 +1,6 @@
 package lk.ijse.smcmanagesuite.model.tm;
 
+import com.jfoenix.controls.JFXButton;
 import lombok.*;
 
 @NoArgsConstructor
@@ -9,7 +10,7 @@ import lombok.*;
 public class ItemTm {
     private String itemId;
     private String description;
-    private String price;
-    private String qty;
-    private String supId;
+    private Double price;
+    private int qty;
+    private JFXButton btnItemCartRemove;
 }

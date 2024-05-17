@@ -142,7 +142,7 @@ public class ItemFormController {
     void btnSaveOnAction(ActionEvent event) {
         String code = txtCode.getText();
         String description = txtDescription.getText();
-        String price = txtUnitPrice.getText();
+        Double price = Double.valueOf(txtUnitPrice.getText());
         String qty = txtQtyOnHand.getText();
         String supId = cmbSupId.getValue();
 
@@ -163,7 +163,7 @@ public class ItemFormController {
     void btnUpdateOnAction(ActionEvent event) {
         String code = txtCode.getText();
         String description = txtDescription.getText();
-        String price = txtUnitPrice.getText();
+        Double price = Double.valueOf(txtUnitPrice.getText());
         String qty = txtQtyOnHand.getText();
         String supId = cmbSupId.getValue();
 

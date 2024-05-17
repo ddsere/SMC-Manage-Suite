@@ -9,7 +9,7 @@ import lombok.*;
 public class Item {
     private String itemId;
     private String description;
-    private String price;
+    private Double price;
     private String qty;
     private String supId;
 }

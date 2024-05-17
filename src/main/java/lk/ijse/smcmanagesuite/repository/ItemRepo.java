@@ -64,7 +64,7 @@ public class ItemRepo {
         if (resultSet.next()) {
             String itemCode = resultSet.getString(1);
             String description = resultSet.getString(2);
-            String price = resultSet.getString(3);
+            Double price = Double.valueOf(resultSet.getString(3));
             String qty = resultSet.getString(4);
             String supId = resultSet.getString(5);
 
