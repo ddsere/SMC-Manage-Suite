@@ -200,7 +200,7 @@ public class PlaceOrderFormController {
 
     @FXML
     void btnAddItemToCartOnAction(ActionEvent event) {
-        if (isValid()) {
+        if (itemAddisValid()) {
             String itemId = cmbItemId.getValue();
             String itemDesc = lblItemName.getText();
             Double itemPrice = Double.valueOf(lblItemUnitPrice.getText());
@@ -268,7 +268,7 @@ public class PlaceOrderFormController {
 
     @FXML
     void btnAddServiceToCartOnAction(ActionEvent event) {
-        if (isValid()) {
+        if (serviceAddisValid()) {
             String code = cmbSId.getValue();
             String description = lblSName.getText();
             double servicePrice = Double.parseDouble(lblSPrice.getText());
@@ -297,14 +297,12 @@ public class PlaceOrderFormController {
             tblCartService.setItems(serviceCartList);
             lblSPrice.setText("");
             lblSName.setText("");
-            txtCusPhone.setText("");
             calculateNetTotal();
         }
     }
 
     @FXML
     void btnPlaceOrderOnAction(ActionEvent event) throws SQLException, JRException {
-        if (isValid()) {
             String orderId = lblOrderID.getText();
             String cusName = lblCusName.getText();
             Date date = Date.valueOf(LocalDate.now());
@@ -388,7 +386,7 @@ public class PlaceOrderFormController {
                             DbConnection.getInstance().getConnection());
 
             JasperViewer.viewReport(jasperPrint, false);
-        }
+
     }
 
     @FXML
@@ -436,9 +434,14 @@ public class PlaceOrderFormController {
         }
     }
 
-    public boolean isValid(){
+    public boolean itemAddisValid(){
         if (!Regex.setTextColor(TextFields.PHONE,txtCusPhone)) return false;
         if (!Regex.setTextColor(TextFields.QTY,txtQtyBuy)) return false;
+        return true;
+    }
+
+    public boolean serviceAddisValid(){
+        if (!Regex.setTextColor(TextFields.PHONE,txtCusPhone)) return false;
         return true;
     }
 

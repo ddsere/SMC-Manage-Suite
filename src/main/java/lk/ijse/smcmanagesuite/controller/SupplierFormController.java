@@ -180,14 +180,14 @@ public class SupplierFormController {
     }
 
     public boolean isValid(){
-        if (!Regex.setTextColor(TextFields.EID,txtId)) return false;
+        if (!Regex.setTextColor(TextFields.SID,txtId)) return false;
         if (!Regex.setTextColor(TextFields.NAME,txtName)) return false;
-        if (!Regex.setTextColor(TextFields.NAME,txtTel)) return false;
+        if (!Regex.setTextColor(TextFields.PHONE,txtTel)) return false;
         return true;
     }
 
     public void txtIdCheckOnAction(KeyEvent keyEvent) {
-        Regex.setTextColor(TextFields.EID,txtId);
+        Regex.setTextColor(TextFields.SID,txtId);
     }
 
     public void txtNameCheckOnAction(KeyEvent keyEvent) {

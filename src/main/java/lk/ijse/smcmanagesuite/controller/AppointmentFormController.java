@@ -382,7 +382,7 @@ public class AppointmentFormController {
 
     public boolean isValid(){
         if (!Regex.setTextColor(TextFields.ID,txtAppId)) return false;
-        if (!Regex.setTextColor(TextFields.NAME,txtCusPhone)) return false;
+        if (!Regex.setTextColor(TextFields.PHONE,txtCusPhone)) return false;
         return true;
     }
 

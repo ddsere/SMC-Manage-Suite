@@ -117,17 +117,17 @@
          </columnResizePolicy>
       </TableView>
       <Line endX="914.0" endY="2.288818359375E-5" layoutX="130.0" layoutY="69.0" startX="-130.0" startY="2.288818359375E-5" stroke="#b7b7b7" />
-      <JFXTextField fx:id="txtId" layoutX="33.0" layoutY="172.0" onAction="#txtSearchOnAction" onKeyReleased="#txtIdCheckOnAction" prefHeight="59.0" prefWidth="190.0">
+      <JFXTextField fx:id="txtId" layoutX="33.0" layoutY="172.0" onAction="#txtSearchOnAction" onKeyReleased="#txtIdCheckOnAction" prefHeight="59.0" prefWidth="190.0" style="-fx-text-fill: white;">
          <font>
             <Font size="28.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtName" layoutX="312.0" layoutY="172.0" onKeyReleased="#txtNameCheckOnAction" prefHeight="59.0" prefWidth="340.0">
+      <JFXTextField fx:id="txtName" layoutX="312.0" layoutY="172.0" onKeyReleased="#txtNameCheckOnAction" prefHeight="59.0" prefWidth="340.0" style="-fx-text-fill: white;">
          <font>
             <Font size="28.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtTel" layoutX="729.0" layoutY="172.0" onKeyReleased="#txtTelCheckOnAction" prefHeight="59.0" prefWidth="286.0">
+      <JFXTextField fx:id="txtTel" layoutX="729.0" layoutY="172.0" onKeyReleased="#txtTelCheckOnAction" prefHeight="59.0" prefWidth="286.0" style="-fx-text-fill: white;">
          <font>
             <Font size="28.0" />
          </font>

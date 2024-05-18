@@ -132,27 +132,27 @@
             <Font size="22.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="txtId" layoutX="33.0" layoutY="172.0" onAction="#txtSearchOnAction" onKeyReleased="#txtIdCheckOnAction" prefHeight="59.0" prefWidth="146.0">
+      <JFXTextField fx:id="txtId" layoutX="33.0" layoutY="172.0" onAction="#txtSearchOnAction" onKeyReleased="#txtIdCheckOnAction" prefHeight="59.0" prefWidth="146.0" style="-fx-text-fill: white;">
          <font>
             <Font size="28.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtName" layoutX="218.0" layoutY="172.0" onKeyReleased="#txtNameCheckOnAction" prefHeight="59.0" prefWidth="410.0">
+      <JFXTextField fx:id="txtName" layoutX="218.0" layoutY="172.0" onKeyReleased="#txtNameCheckOnAction" prefHeight="59.0" prefWidth="410.0" style="-fx-text-fill: white;">
          <font>
             <Font size="28.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtAddress" layoutX="669.0" layoutY="172.0" onKeyReleased="#txtAddressCheckOnAction" prefHeight="59.0" prefWidth="344.0">
+      <JFXTextField fx:id="txtAddress" layoutX="669.0" layoutY="172.0" onKeyReleased="#txtAddressCheckOnAction" prefHeight="59.0" prefWidth="344.0" style="-fx-text-fill: white;">
          <font>
             <Font size="28.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtPhone" layoutX="32.0" layoutY="288.0" onKeyReleased="#txtPhoneCheckOnAction" prefHeight="59.0" prefWidth="236.0">
+      <JFXTextField fx:id="txtPhone" layoutX="32.0" layoutY="288.0" onKeyReleased="#txtPhoneCheckOnAction" prefHeight="59.0" prefWidth="236.0" style="-fx-text-fill: white;">
          <font>
             <Font size="28.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtSalary" layoutX="305.0" layoutY="288.0" onKeyReleased="#txtSalaryCheckOnAction" prefHeight="59.0" prefWidth="236.0">
+      <JFXTextField fx:id="txtSalary" layoutX="305.0" layoutY="288.0" onKeyReleased="#txtSalaryCheckOnAction" prefHeight="59.0" prefWidth="236.0" style="-fx-text-fill: white;">
          <font>
             <Font size="28.0" />
          </font>
