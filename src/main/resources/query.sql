@@ -48,37 +48,12 @@ CREATE TABLE Orders (
                         FOREIGN KEY (Phone) REFERENCES Customer(Phone) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
-CREATE TABLE Payment (
-                         Pay_Id VARCHAR (10) PRIMARY KEY,
-                         Amount DECIMAL (10, 2),
-                         Date DATE,
-                         Order_Id VARCHAR (10),
-                         FOREIGN KEY (Order_Id) REFERENCES Orders(Order_Id) ON UPDATE CASCADE ON DELETE CASCADE
-);
-
 CREATE TABLE Service (
                          S_Id VARCHAR (10) PRIMARY KEY,
                          Name VARCHAR(30),
                          Price DECIMAL(10, 2),
                          Emp_Id VARCHAR (10),
                          FOREIGN KEY (Emp_Id) REFERENCES Employee(Emp_Id) ON UPDATE CASCADE ON DELETE CASCADE
-);
-
-CREATE TABLE Attendance (
-                            Attend_Id VARCHAR (10) PRIMARY KEY,
-                            Date DATE,
-                            Status VARCHAR (10),
-                            Emp_Id VARCHAR (10),
-                            FOREIGN KEY (Emp_Id) REFERENCES Employee(Emp_Id) ON UPDATE CASCADE ON DELETE CASCADE
-);
-
-CREATE TABLE Salary (
-                        Salary_Id VARCHAR (10) PRIMARY KEY,
-                        Amount DECIMAL (10, 2),
-                        Year YEAR,
-                        Month TINYINT,
-                        Emp_Id VARCHAR (10),
-                        FOREIGN KEY (Emp_Id) REFERENCES Employee(Emp_Id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE Item_orders (
@@ -108,11 +83,4 @@ CREATE TABLE Appointment (
                              FOREIGN KEY (Customer_Phone) REFERENCES Customer(Phone) ON UPDATE CASCADE ON DELETE CASCADE,
                              FOREIGN KEY (Service_Id) REFERENCES Service(S_Id) ON UPDATE CASCADE ON DELETE CASCADE,
                              FOREIGN KEY (Employee_Id) REFERENCES Employee(Emp_Id) ON UPDATE CASCADE ON DELETE CASCADE
-);
-
-CREATE TABLE Time_Slot (
-                           Slot_Id VARCHAR(10) PRIMARY KEY,
-                           Day VARCHAR(10),
-                           Start_Time TIME,
-                           End_Time TIME
 );
