@@ -13,7 +13,6 @@ import lk.ijse.smcmanagesuite.model.*;
 import lk.ijse.smcmanagesuite.model.tm.AppointmentTm;
 import lk.ijse.smcmanagesuite.repository.*;
 
-import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -272,10 +271,10 @@ public class AppointmentFormController {
         String status = "Completed";
         AppointmentStatus appointmentStatus = new AppointmentStatus(status, appId);
 
-        PlaceOrder po = new PlaceOrder(order, appointmentStatus);
+        ChangeAppointment po = new ChangeAppointment(order, appointmentStatus);
         System.out.println(po.toString());
         try {
-            boolean isPlaced = PlaceOrderRepo.placeOrder(po);
+            boolean isPlaced = ChangeAppointmentRepo.changeAppointment(po);
             System.out.println(isPlaced);
             if(isPlaced) {
                 new Alert(Alert.AlertType.CONFIRMATION, "order placed!").show();

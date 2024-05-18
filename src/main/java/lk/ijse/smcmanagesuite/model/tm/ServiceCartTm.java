@@ -9,6 +9,6 @@ import lombok.*;
 public class ServiceCartTm {
     private String sId;
     private String sDesc;
-    private String sPrice;
+    private Double sPrice;
     private JFXButton btnRemove;
 }

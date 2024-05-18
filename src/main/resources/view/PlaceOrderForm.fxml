@@ -29,7 +29,7 @@
             <Font size="22.0" />
          </font>
       </Label>
-      <Label fx:id="lblOrderID" layoutX="895.0" layoutY="87.0" text="D001" textFill="WHITE">
+      <Label fx:id="lblOrderID" layoutX="895.0" layoutY="87.0" textFill="WHITE">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
@@ -45,7 +45,7 @@
             <Font size="22.0" />
          </font>
       </Label>
-      <Label fx:id="lblOrderDate" layoutX="895.0" layoutY="126.0" text="2024-05-17" textFill="WHITE">
+      <Label fx:id="lblOrderDate" layoutX="895.0" layoutY="126.0" textFill="WHITE">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
@@ -92,7 +92,7 @@
             <Font size="22.0" />
          </font>
       </Label>
-      <Label fx:id="lblSName" layoutX="157.0" layoutY="281.0" text="Description" textFill="WHITE">
+      <Label fx:id="lblSName" layoutX="157.0" layoutY="281.0" textFill="WHITE">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
@@ -103,7 +103,7 @@
          </font>
       </Label>
       <Line endX="96.83331298828125" endY="3.0517578125E-5" layoutX="623.0" layoutY="408.0" opacity="0.4" startX="-127.9666748046875" startY="1.52587890625E-5" stroke="WHITE" />
-      <Label fx:id="lblItemName" layoutX="496.0" layoutY="372.0" text="Description" textFill="WHITE">
+      <Label fx:id="lblItemName" layoutX="496.0" layoutY="372.0" textFill="WHITE">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
@@ -150,7 +150,7 @@
          </font>
       </Label>
       <Line endX="-35.69996643066406" layoutX="268.0" layoutY="486.0" opacity="0.4" startX="-127.9666748046875" startY="1.52587890625E-5" stroke="WHITE" />
-      <Label fx:id="lblItemUnitPrice" layoutX="141.0" layoutY="450.0" text="2500.00" textFill="WHITE">
+      <Label fx:id="lblItemUnitPrice" layoutX="141.0" layoutY="450.0" textFill="WHITE">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
@@ -161,7 +161,7 @@
          </font>
       </Label>
       <Line endX="-71.50003051757812" layoutX="562.0" layoutY="484.0" opacity="0.4" startX="-127.9666748046875" startY="1.52587890625E-5" stroke="WHITE" />
-      <Label fx:id="lblItemQtyOnHand" layoutX="435.0" layoutY="448.0" text="300" textFill="WHITE">
+      <Label fx:id="lblItemQtyOnHand" layoutX="435.0" layoutY="448.0" textFill="WHITE">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
@@ -173,7 +173,7 @@
          </font>
       </Label>
       <Line endX="-32.7667236328125" endY="3.0517578125E-5" layoutX="648.0" layoutY="249.0" opacity="0.4" startX="-127.9666748046875" startY="1.52587890625E-5" stroke="WHITE" />
-      <Label fx:id="lblSPrice" layoutX="521.0" layoutY="213.0" text="2500.00" textFill="WHITE">
+      <Label fx:id="lblSPrice" layoutX="521.0" layoutY="213.0" textFill="WHITE">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
@@ -213,7 +213,7 @@
          </font>
       </Label>
       <Line endX="112.03326416015625" endY="1.52587890625E-5" layoutX="562.0" layoutY="155.0" opacity="0.4" startX="-127.9666748046875" startY="1.52587890625E-5" stroke="WHITE" />
-      <Label fx:id="lblCusName" layoutX="435.0" layoutY="119.0" text="DHANUSHKA" textFill="WHITE">
+      <Label fx:id="lblCusName" layoutX="435.0" layoutY="119.0" textFill="WHITE">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
@@ -223,7 +223,7 @@
             <Font size="22.0" />
          </font>
       </Label>
-      <Label fx:id="lblNetTotal" layoutX="132.0" layoutY="717.0" text="2500.00" textFill="WHITE">
+      <Label fx:id="lblNetTotal" layoutX="132.0" layoutY="717.0" textFill="WHITE">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>

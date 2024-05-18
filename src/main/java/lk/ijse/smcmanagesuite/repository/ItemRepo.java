@@ -2,6 +2,7 @@ package lk.ijse.smcmanagesuite.repository;
 
 import lk.ijse.smcmanagesuite.db.DbConnection;
 import lk.ijse.smcmanagesuite.model.Item;
+import lk.ijse.smcmanagesuite.model.ItemQty;
 import lk.ijse.smcmanagesuite.model.Supplier;
 
 import java.sql.PreparedStatement;
@@ -71,5 +72,40 @@ public class ItemRepo {
             item = new Item(itemCode, description, price, qty, supId);
         }
         return item;
+    }
+
+    public static List<String> getCodes() throws SQLException {
+        String sql = "SELECT Item_Id FROM Item";
+
+        PreparedStatement pstm = DbConnection.getInstance().getConnection()
+                .prepareStatement(sql);
+
+        List<String> idList = new ArrayList<>();
+
+        ResultSet resultSet = pstm.executeQuery();
+
+        while(resultSet.next()) {
+            idList.add(resultSet.getString(1));
+        }
+        return idList;
+    }
+
+    public static boolean updateQty(List<ItemQty> itemQties) throws SQLException {
+        for (ItemQty od : itemQties) {
+            if(!updateQty(od)) {
+                return false;
+            }
+        }
+        return true;
+    }
+    public static boolean updateQty(ItemQty od) throws SQLException {
+        String sql = "UPDATE item SET Qty = Qty - ? WHERE Item_Id = ?";
+        PreparedStatement pstm = DbConnection.getInstance().getConnection()
+                .prepareStatement(sql);
+
+        pstm.setInt(1, od.getQty());
+        pstm.setString(2, od.getItemCode());
+
+        return pstm.executeUpdate() > 0;
     }
 }

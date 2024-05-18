@@ -10,12 +10,16 @@ import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.smcmanagesuite.model.*;
 import lk.ijse.smcmanagesuite.model.tm.ItemCartTm;
 import lk.ijse.smcmanagesuite.model.tm.ServiceCartTm;
-import lk.ijse.smcmanagesuite.repository.OrderRepo;
+import lk.ijse.smcmanagesuite.repository.*;
 
+import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 public class PlaceOrderFormController {
@@ -90,7 +94,7 @@ public class PlaceOrderFormController {
     private TableView<ItemCartTm> tblCartItem;
 
     @FXML
-    private TableView<?> tblCartService;
+    private TableView<ServiceCartTm> tblCartService;
 
     @FXML
     private TextField txtCusPhone;
@@ -101,6 +105,7 @@ public class PlaceOrderFormController {
     private ObservableList<ItemCartTm> itemCartList = FXCollections.observableArrayList();
     private ObservableList<ServiceCartTm> serviceCartList = FXCollections.observableArrayList();
     private double netTotal = 0;
+    private String cusPhone ;
 
     public void initialize() {
         setCellValueFactory();
@@ -111,11 +116,33 @@ public class PlaceOrderFormController {
     }
 
     private void getItemId() {
+        ObservableList<String> obList = FXCollections.observableArrayList();
+        try {
+            List<String> idList = ItemRepo.getCodes();
+            for (String id : idList) {
+                obList.add(id);
+            }
 
+            cmbItemId.setItems(obList);
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void getServiceId() {
+        ObservableList<String> obList = FXCollections.observableArrayList();
+        try {
+            List<String> idList = ServiceRepo.getIds();
+            for (String id : idList) {
+                obList.add(id);
+            }
 
+            cmbSId.setItems(obList);
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void setDate() {
@@ -149,16 +176,16 @@ public class PlaceOrderFormController {
 
     private void setCellValueFactory() {
         colItemId.setCellValueFactory(new PropertyValueFactory<>("itemId"));
-        colItemName.setCellValueFactory(new PropertyValueFactory<>("description"));
-        colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
-        colItemQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
-        colItemTotal.setCellValueFactory(new PropertyValueFactory<>("qty"));
-        colItemCartAction.setCellValueFactory(new PropertyValueFactory<>("btnItemCartRemove"));
+        colItemName.setCellValueFactory(new PropertyValueFactory<>("itemDesc"));
+        colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("itemUnitPrice"));
+        colItemQty.setCellValueFactory(new PropertyValueFactory<>("itemQty"));
+        colItemTotal.setCellValueFactory(new PropertyValueFactory<>("itemTotal"));
+        colItemCartAction.setCellValueFactory(new PropertyValueFactory<>("btnRemove"));
 
         colSId.setCellValueFactory(new PropertyValueFactory<>("sId"));
         colSName.setCellValueFactory(new PropertyValueFactory<>("sDesc"));
         colSPrice.setCellValueFactory(new PropertyValueFactory<>("sPrice"));
-        colSCartAction.setCellValueFactory(new PropertyValueFactory<>("btnServiceCartRemove"));
+        colSCartAction.setCellValueFactory(new PropertyValueFactory<>("btnRemove"));
     }
 
     @FXML
@@ -211,37 +238,136 @@ public class PlaceOrderFormController {
     }
 
     private void calculateNetTotal() {
-        netTotal = 0;
+
+        double netItemTotal = 0;
+        double netServiceTotal = 0;
+
         for (int i = 0; i < tblCartItem.getItems().size(); i++) {
-            netTotal += (double) colItemTotal.getCellData(i);
+            netItemTotal += (double) colItemTotal.getCellData(i);
+
         }
+        for (int i = 0;i<tblCartService.getItems().size();i++){
+            netServiceTotal +=(double) colSPrice.getCellData(i);
+        }
+        netTotal = netItemTotal + netServiceTotal;
         lblNetTotal.setText(String.valueOf(netTotal));
     }
 
 
     @FXML
     void btnAddServiceToCartOnAction(ActionEvent event) {
+        String code = cmbSId.getValue();
+        String description = lblSName.getText();
+        double servicePrice = Double.parseDouble(lblSPrice.getText());
+        JFXButton btnRemove = new JFXButton("Remove");
+        btnRemove.setCursor(Cursor.HAND);
 
+        btnRemove.setOnAction((e) -> {
+            ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
+            ButtonType no = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+            Optional<ButtonType> type = new Alert(Alert.AlertType.INFORMATION, "Are you sure to remove?", yes, no).showAndWait();
+
+            if(type.orElse(no) == yes) {
+                int selectedIndex = tblCartService.getSelectionModel().getSelectedIndex();
+                serviceCartList.remove(selectedIndex);
+
+                tblCartService.refresh();
+                calculateNetTotal();
+            }
+        });
+
+        ServiceCartTm sCartList = new ServiceCartTm(code, description, servicePrice,btnRemove);
+
+        serviceCartList.add(sCartList);
+
+        tblCartService.setItems(serviceCartList);
+        lblSPrice.setText("");
+        lblSName.setText("");
+        txtCusPhone.setText("");
+        calculateNetTotal();
     }
 
     @FXML
     void btnPlaceOrderOnAction(ActionEvent event) {
+        String orderId = lblOrderID.getText();
+        String cusName = lblCusName.getText();
+        Date date = Date.valueOf(LocalDate.now());
+        double total = Double.parseDouble(lblNetTotal.getText());
 
+
+        var order = new Order(orderId,date,total, cusPhone, cusName);
+
+        System.out.println(order.toString());
+
+        List<ItemQty> itemQties = new ArrayList<>();
+        for (int i = 0; i < tblCartItem.getItems().size(); i++) {
+            ItemCartTm tm = itemCartList.get(i);
+
+            ItemQty od = new ItemQty(
+                    tm.getItemQty(),
+                    tm.getItemId()
+            );
+            itemQties.add(od);
+        }
+
+        PlaceOrder po = new PlaceOrder(order, itemQties);
+        try {
+            boolean isPlaced = PlaceOrderRepo.placeOrder(po);
+            System.out.println(isPlaced);
+            if(isPlaced) {
+                new Alert(Alert.AlertType.CONFIRMATION, "order placed!").show();
+            } else {
+                new Alert(Alert.AlertType.WARNING, "order not placed!").show();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
     }
 
     @FXML
     void cmbItemIdOnAction(ActionEvent event) {
+        String empId = cmbItemId.getValue();
 
+        try {
+            Item item = ItemRepo.searchById(empId);
+            if (item != null) {
+                lblItemName.setText(item.getDescription());
+                lblItemQtyOnHand.setText(item.getQty());
+                lblItemUnitPrice.setText(String.valueOf(item.getPrice()));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
     void cmbSIdOnAction(ActionEvent event) {
+        String serviceId = cmbSId.getValue();
 
+        try {
+            Service service = ServiceRepo.searchById(serviceId);
+            if (service != null) {
+                lblSName.setText(service.getDescription());
+                lblSPrice.setText(service.getPrice());
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
     void txtSearchOnAction(ActionEvent event) {
+        cusPhone = txtCusPhone.getText();
 
+        try {
+            Customer customer = CustomerRepo.searchById(cusPhone);
+            if (customer != null) {
+                lblCusName.setText(customer.getName());
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }
