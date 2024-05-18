@@ -1,12 +1,14 @@
 package lk.ijse.smcmanagesuite.controller;
 
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import lk.ijse.smcmanagesuite.model.Item;
 import lk.ijse.smcmanagesuite.model.ItemwithSupplier;
 import lk.ijse.smcmanagesuite.model.Supplier;
@@ -14,6 +16,8 @@ import lk.ijse.smcmanagesuite.model.tm.ItemwithSupplierTm;
 import lk.ijse.smcmanagesuite.repository.ItemRepo;
 import lk.ijse.smcmanagesuite.repository.ItemwithSupplierRepo;
 import lk.ijse.smcmanagesuite.repository.SupplierRepo;
+import lk.ijse.smcmanagesuite.util.Regex;
+import lk.ijse.smcmanagesuite.util.TextFields;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -49,16 +53,16 @@ public class ItemFormController {
     private TableView<ItemwithSupplierTm> tblItem;
 
     @FXML
-    private TextField txtCode;
+    private JFXTextField txtCode;
 
     @FXML
-    private TextField txtDescription;
+    private JFXTextField txtDescription;
 
     @FXML
-    private TextField txtQtyOnHand;
+    private JFXTextField txtQtyOnHand;
 
     @FXML
-    private TextField txtUnitPrice;
+    private JFXTextField txtUnitPrice;
 
     private List<ItemwithSupplier> itemwithSupplierList = new ArrayList<>();
 
@@ -140,45 +144,49 @@ public class ItemFormController {
 
     @FXML
     void btnSaveOnAction(ActionEvent event) {
-        String code = txtCode.getText();
-        String description = txtDescription.getText();
-        Double price = Double.valueOf(txtUnitPrice.getText());
-        String qty = txtQtyOnHand.getText();
-        String supId = cmbSupId.getValue();
+        if (isValid()) {
+            String code = txtCode.getText();
+            String description = txtDescription.getText();
+            Double price = Double.valueOf(txtUnitPrice.getText());
+            String qty = txtQtyOnHand.getText();
+            String supId = cmbSupId.getValue();
 
-        Item item = new Item(code,description,price,qty,supId);
+            Item item = new Item(code, description, price, qty, supId);
 
-        try {
-            boolean isSaved = ItemRepo.save(item);
-            if (isSaved) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Item Saved!").show();
+            try {
+                boolean isSaved = ItemRepo.save(item);
+                if (isSaved) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Item Saved!").show();
+                }
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            initialize();
         }
-        initialize();
     }
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
-        String code = txtCode.getText();
-        String description = txtDescription.getText();
-        Double price = Double.valueOf(txtUnitPrice.getText());
-        String qty = txtQtyOnHand.getText();
-        String supId = cmbSupId.getValue();
+        if (isValid()) {
+            String code = txtCode.getText();
+            String description = txtDescription.getText();
+            Double price = Double.valueOf(txtUnitPrice.getText());
+            String qty = txtQtyOnHand.getText();
+            String supId = cmbSupId.getValue();
 
-        Item item = new Item(code,description,price,qty,supId);
+            Item item = new Item(code, description, price, qty, supId);
 
-        try {
-            boolean isUpdated = ItemRepo.update(item);
-            if (isUpdated) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Item Updated!").show();
+            try {
+                boolean isUpdated = ItemRepo.update(item);
+                if (isUpdated) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Item Updated!").show();
+                }
+            } catch (SQLException e) {
+                System.out.println(e);
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             }
-        } catch (SQLException e) {
-            System.out.println(e);
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            initialize();
         }
-        initialize();
     }
 
     private void getSupIds() {
@@ -230,4 +238,27 @@ public class ItemFormController {
         }
     }
 
+    public boolean isValid(){
+        if (!Regex.setTextColor(TextFields.IID,txtCode)) return false;
+        if (!Regex.setTextColor(TextFields.NAME,txtDescription)) return false;
+        if (!Regex.setTextColor(TextFields.QTY,txtQtyOnHand)) return false;
+        if (!Regex.setTextColor(TextFields.PRICE,txtUnitPrice)) return false;
+        return true;
+    }
+
+    public void txtIdCheckOnAction(KeyEvent keyEvent) {
+        Regex.setTextColor(TextFields.IID,txtCode);
+    }
+
+    public void txtDescCheckOnAction(KeyEvent keyEvent) {
+        Regex.setTextColor(TextFields.NAME,txtDescription);
+    }
+
+    public void txtPriceCheckOnAction(KeyEvent keyEvent) {
+        Regex.setTextColor(TextFields.QTY,txtQtyOnHand);
+    }
+
+    public void txtQtyCheckOnAction(KeyEvent keyEvent) {
+        Regex.setTextColor(TextFields.PRICE,txtUnitPrice);
+    }
 }

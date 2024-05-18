@@ -1,6 +1,7 @@
 package lk.ijse.smcmanagesuite.controller;
 
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -9,9 +10,12 @@ import javafx.scene.control.*;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import lk.ijse.smcmanagesuite.model.*;
 import lk.ijse.smcmanagesuite.model.tm.AppointmentTm;
 import lk.ijse.smcmanagesuite.repository.*;
+import lk.ijse.smcmanagesuite.util.Regex;
+import lk.ijse.smcmanagesuite.util.TextFields;
 
 import java.sql.Date;
 import java.sql.SQLException;
@@ -61,10 +65,10 @@ public class AppointmentFormController {
     private TableView<AppointmentTm> tblAppointment;
 
     @FXML
-    private TextField txtAppId;
+    private JFXTextField txtAppId;
 
     @FXML
-    private TextField txtCusPhone;
+    private JFXTextField txtCusPhone;
 
     @FXML
     private DatePicker txtDate;
@@ -184,32 +188,34 @@ public class AppointmentFormController {
 
     @FXML
     void btnSaveOnAction(ActionEvent event) {
-        String appId = txtAppId.getText();
-        LocalDate date = txtDate.getValue();
-        String cusPhone = txtCusPhone.getText();
-        String servId = cmbServId.getValue();
-        String empId = cmbEmpId.getValue();
-        String ts = cmbTimeSlot.getValue();
+        if (isValid()) {
+            String appId = txtAppId.getText();
+            LocalDate date = txtDate.getValue();
+            String cusPhone = txtCusPhone.getText();
+            String servId = cmbServId.getValue();
+            String empId = cmbEmpId.getValue();
+            String ts = cmbTimeSlot.getValue();
 
 
-        try {
-            price = ServiceRepo.getPrice(servId);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
-        Appointment appointment = new Appointment(appId, date, cusPhone, servId, empId, ts, price);
-        System.out.println(appointment.toString());
-
-        try {
-            boolean isSaved = AppointmentRepo.save(appointment);
-            if (isSaved) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Appointment Saved!").show();
+            try {
+                price = ServiceRepo.getPrice(servId);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
             }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+
+            Appointment appointment = new Appointment(appId, date, cusPhone, servId, empId, ts, price);
+            System.out.println(appointment.toString());
+
+            try {
+                boolean isSaved = AppointmentRepo.save(appointment);
+                if (isSaved) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Appointment Saved!").show();
+                }
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            }
+            initialize();
         }
-        initialize();
     }
 
     @FXML
@@ -230,59 +236,63 @@ public class AppointmentFormController {
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
-        String appId = txtAppId.getText();
-        LocalDate date = txtDate.getValue();
-        String cusPhone = txtCusPhone.getText();
-        String servId = cmbServId.getValue();
-        String empId = cmbEmpId.getValue();
-        String ts = cmbTimeSlot.getValue();
+        if (isValid()) {
+            String appId = txtAppId.getText();
+            LocalDate date = txtDate.getValue();
+            String cusPhone = txtCusPhone.getText();
+            String servId = cmbServId.getValue();
+            String empId = cmbEmpId.getValue();
+            String ts = cmbTimeSlot.getValue();
 
-        Appointment appointment = new Appointment(appId, date, cusPhone, servId, empId, ts, price);
+            Appointment appointment = new Appointment(appId, date, cusPhone, servId, empId, ts, price);
 
-        try {
-            boolean isUpdated = AppointmentRepo.update(appointment);
-            if (isUpdated) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Appointment Updated!").show();
+            try {
+                boolean isUpdated = AppointmentRepo.update(appointment);
+                if (isUpdated) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Appointment Updated!").show();
+                }
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            initialize();
         }
-        initialize();
     }
 
     public void btnCompleteOnAction(ActionEvent actionEvent) {
-        String appId = txtAppId.getText();
-        String servId = cmbServId.getValue();
-        double price;
+        if (isValid()) {
+            String appId = txtAppId.getText();
+            String servId = cmbServId.getValue();
+            double price;
 
-        try {
-            price = ServiceRepo.getPrice(servId);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
-        String cusPhone = txtCusPhone.getText();
-        String cusName = lblCusName.getText();
-        Date date = Date.valueOf(LocalDate.now());
-
-        String orderId = loadNextOrderId();
-        var order = new Order(orderId, date, price, cusPhone, cusName);
-
-        String status = "Completed";
-        AppointmentStatus appointmentStatus = new AppointmentStatus(status, appId);
-
-        ChangeAppointment po = new ChangeAppointment(order, appointmentStatus);
-        System.out.println(po.toString());
-        try {
-            boolean isPlaced = ChangeAppointmentRepo.changeAppointment(po);
-            System.out.println(isPlaced);
-            if(isPlaced) {
-                new Alert(Alert.AlertType.CONFIRMATION, "order placed!").show();
-            } else {
-                new Alert(Alert.AlertType.WARNING, "order not placed!").show();
+            try {
+                price = ServiceRepo.getPrice(servId);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
             }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+
+            String cusPhone = txtCusPhone.getText();
+            String cusName = lblCusName.getText();
+            Date date = Date.valueOf(LocalDate.now());
+
+            String orderId = loadNextOrderId();
+            var order = new Order(orderId, date, price, cusPhone, cusName);
+
+            String status = "Completed";
+            AppointmentStatus appointmentStatus = new AppointmentStatus(status, appId);
+
+            ChangeAppointment po = new ChangeAppointment(order, appointmentStatus);
+            System.out.println(po.toString());
+            try {
+                boolean isPlaced = ChangeAppointmentRepo.changeAppointment(po);
+                System.out.println(isPlaced);
+                if (isPlaced) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "order placed!").show();
+                } else {
+                    new Alert(Alert.AlertType.WARNING, "order not placed!").show();
+                }
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            }
         }
     }
 
@@ -368,5 +378,19 @@ public class AppointmentFormController {
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
+    }
+
+    public boolean isValid(){
+        if (!Regex.setTextColor(TextFields.ID,txtAppId)) return false;
+        if (!Regex.setTextColor(TextFields.NAME,txtCusPhone)) return false;
+        return true;
+    }
+
+    public void txtIdCheckOnAction(KeyEvent keyEvent) {
+        Regex.setTextColor(TextFields.ID,txtAppId);
+    }
+
+    public void txtPhoneCheckOnAction(KeyEvent keyEvent) {
+        Regex.setTextColor(TextFields.PHONE,txtCusPhone);
     }
 }

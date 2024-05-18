@@ -1,17 +1,21 @@
 package lk.ijse.smcmanagesuite.controller;
 
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.smcmanagesuite.model.*;
 import lk.ijse.smcmanagesuite.model.tm.ItemwithSupplierTm;
 import lk.ijse.smcmanagesuite.model.tm.ServicewithEmployeeTm;
 import lk.ijse.smcmanagesuite.repository.*;
+import lk.ijse.smcmanagesuite.util.Regex;
+import lk.ijse.smcmanagesuite.util.TextFields;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -47,13 +51,13 @@ public class ServiceFormController {
     private TableView<ServicewithEmployeeTm> tblService;
 
     @FXML
-    private TextField txtDescription;
+    private JFXTextField txtDescription;
 
     @FXML
-    private TextField txtId;
+    private JFXTextField txtId;
 
     @FXML
-    private TextField txtPrice;
+    private JFXTextField txtPrice;
 
     private List<ServicewithEmployee> servicewithEmployeeList = new ArrayList<>();
 
@@ -147,43 +151,47 @@ public class ServiceFormController {
 
     @FXML
     void btnSaveOnAction(ActionEvent event) {
-        String id = txtId.getText();
-        String description = txtDescription.getText();
-        String price = txtPrice.getText();
-        String empId = cmbEmpId.getValue();
+        if (isValid()) {
+            String id = txtId.getText();
+            String description = txtDescription.getText();
+            String price = txtPrice.getText();
+            String empId = cmbEmpId.getValue();
 
-        Service service = new Service(id,description,price,empId);
+            Service service = new Service(id, description, price, empId);
 
-        try {
-            boolean isSaved = ServiceRepo.save(service);
-            if (isSaved) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Service Saved!").show();
+            try {
+                boolean isSaved = ServiceRepo.save(service);
+                if (isSaved) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Service Saved!").show();
+                }
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            initialize();
         }
-        initialize();
     }
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
-        String id = txtId.getText();
-        String description = txtDescription.getText();
-        String price = txtPrice.getText();
-        String empId = cmbEmpId.getValue();
+        if (isValid()) {
+            String id = txtId.getText();
+            String description = txtDescription.getText();
+            String price = txtPrice.getText();
+            String empId = cmbEmpId.getValue();
 
-        Service service = new Service(id,description,price,empId);
+            Service service = new Service(id, description, price, empId);
 
-        try {
-            boolean isUpdated = ServiceRepo.update(service);
-            if (isUpdated) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Service Updated!").show();
+            try {
+                boolean isUpdated = ServiceRepo.update(service);
+                if (isUpdated) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Service Updated!").show();
+                }
+            } catch (SQLException e) {
+                System.out.println(e);
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             }
-        } catch (SQLException e) {
-            System.out.println(e);
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            initialize();
         }
-        initialize();
     }
 
     @FXML
@@ -221,4 +229,22 @@ public class ServiceFormController {
         }
     }
 
+    public boolean isValid(){
+        if (!Regex.setTextColor(TextFields.SID,txtId)) return false;
+        if (!Regex.setTextColor(TextFields.NAME,txtDescription)) return false;
+        if (!Regex.setTextColor(TextFields.PRICE,txtPrice)) return false;
+        return true;
+    }
+
+    public void txtIdCheckOnAction(KeyEvent keyEvent) {
+        Regex.setTextColor(TextFields.SID,txtId);
+    }
+
+    public void txtDescCheckOnAction(KeyEvent keyEvent) {
+        Regex.setTextColor(TextFields.NAME,txtDescription);
+    }
+
+    public void txtPriceCheckOnAction(KeyEvent keyEvent) {
+        Regex.setTextColor(TextFields.PRICE,txtPrice);
+    }
 }

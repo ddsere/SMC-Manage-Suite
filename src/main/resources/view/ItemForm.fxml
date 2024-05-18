@@ -2,11 +2,11 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -23,26 +23,14 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <TextField fx:id="txtCode" layoutX="33.0" layoutY="129.0" onAction="#txtSearchOnAction" prefHeight="62.0" prefWidth="184.0">
-         <font>
-            <Font size="28.0" />
-         </font></TextField>
       <Label layoutX="33.0" layoutY="91.0" text="Item Code *" textFill="WHITE">
          <font>
             <Font size="22.0" />
          </font></Label>
-      <TextField fx:id="txtDescription" layoutX="277.0" layoutY="129.0" prefHeight="62.0" prefWidth="491.0">
-         <font>
-            <Font size="28.0" />
-         </font></TextField>
       <Label layoutX="277.0" layoutY="91.0" text="Description *" textFill="WHITE">
          <font>
             <Font size="22.0" />
          </font></Label>
-      <TextField fx:id="txtQtyOnHand" layoutX="32.0" layoutY="258.0" prefHeight="62.0" prefWidth="143.0">
-         <font>
-            <Font size="28.0" />
-         </font></TextField>
       <Label layoutX="32.0" layoutY="220.0" text="Qty On Hand *" textFill="WHITE">
          <font>
             <Font size="22.0" />
@@ -133,10 +121,6 @@
          </columnResizePolicy>
       </TableView>
       <JFXComboBox fx:id="cmbSupId" layoutX="219.0" layoutY="258.0" onAction="#cmbSupplierOnAction" prefHeight="62.0" prefWidth="143.0" style="-fx-background-color: #ffffff;" />
-      <TextField fx:id="txtUnitPrice" layoutX="827.0" layoutY="129.0" prefHeight="62.0" prefWidth="184.0">
-         <font>
-            <Font size="28.0" />
-         </font></TextField>
       <Label layoutX="827.0" layoutY="91.0" text="Unit Price *" textFill="WHITE">
          <font>
             <Font size="22.0" />
@@ -151,11 +135,35 @@
             <Font size="22.0" />
          </font>
       </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="62.0" layoutX="408.0" layoutY="259.0" stroke="#d9d9d9" strokeType="INSIDE" width="339.0" />
-      <Label fx:id="lblSupName" layoutX="436.0" layoutY="271.0" prefHeight="40.0" prefWidth="302.0">
+      <Label fx:id="lblSupName" layoutX="410.0" layoutY="271.0" prefHeight="40.0" prefWidth="302.0" textFill="WHITE">
          <font>
             <Font size="28.0" />
          </font>
       </Label>
+      <JFXTextField fx:id="txtCode" layoutX="33.0" layoutY="130.0" onAction="#txtSearchOnAction" onKeyReleased="#txtIdCheckOnAction" prefHeight="59.0" prefWidth="178.0" style="-fx-text-fill: white;">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txtDescription" layoutX="280.0" layoutY="130.0" onKeyReleased="#txtDescCheckOnAction" prefHeight="59.0" prefWidth="491.0" style="-fx-text-fill: white;">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txtUnitPrice" layoutX="828.0" layoutY="130.0" onKeyReleased="#txtPriceCheckOnAction" prefHeight="59.0" prefWidth="184.0" style="-fx-text-fill: white;">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField layoutX="409.0" layoutY="259.0" prefHeight="59.0" prefWidth="184.0">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txtQtyOnHand" layoutX="33.0" layoutY="259.0" onKeyReleased="#txtQtyCheckOnAction" prefHeight="59.0" prefWidth="140.0" style="-fx-text-fill: white;">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </JFXTextField>
    </children>
 </AnchorPane>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -22,31 +22,16 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <TextField fx:id="txtId" layoutX="33.0" layoutY="171.0" onAction="#txtSearchOnAction" prefHeight="62.0" prefWidth="145.0">
-         <font>
-            <Font size="28.0" />
-         </font>
-      </TextField>
       <Label layoutX="33.0" layoutY="133.0" text="Employee ID *" textFill="WHITE">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
-      <TextField fx:id="txtName" layoutX="218.0" layoutY="171.0" prefHeight="62.0" prefWidth="410.0">
-         <font>
-            <Font size="28.0" />
-         </font>
-      </TextField>
       <Label layoutX="218.0" layoutY="133.0" text="Employee Name *" textFill="WHITE">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
-      <TextField fx:id="txtSalary" layoutX="304.0" layoutY="287.0" prefHeight="62.0" prefWidth="236.0">
-         <font>
-            <Font size="28.0" />
-         </font>
-      </TextField>
       <Label layoutX="304.0" layoutY="249.0" text="Salary *" textFill="WHITE">
          <font>
             <Font size="22.0" />
@@ -142,20 +127,35 @@
             <Font size="22.0" />
          </font>
       </Label>
-      <TextField fx:id="txtAddress" layoutX="670.0" layoutY="171.0" prefHeight="62.0" prefWidth="344.0">
-         <font>
-            <Font size="28.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="txtPhone" layoutX="33.0" layoutY="287.0" prefHeight="62.0" prefWidth="236.0">
-         <font>
-            <Font size="28.0" />
-         </font>
-      </TextField>
       <Label layoutX="33.0" layoutY="249.0" text="Phone *" textFill="WHITE">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
+      <JFXTextField fx:id="txtId" layoutX="33.0" layoutY="172.0" onAction="#txtSearchOnAction" onKeyReleased="#txtIdCheckOnAction" prefHeight="59.0" prefWidth="146.0">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txtName" layoutX="218.0" layoutY="172.0" onKeyReleased="#txtNameCheckOnAction" prefHeight="59.0" prefWidth="410.0">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txtAddress" layoutX="669.0" layoutY="172.0" onKeyReleased="#txtAddressCheckOnAction" prefHeight="59.0" prefWidth="344.0">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txtPhone" layoutX="32.0" layoutY="288.0" onKeyReleased="#txtPhoneCheckOnAction" prefHeight="59.0" prefWidth="236.0">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txtSalary" layoutX="305.0" layoutY="288.0" onKeyReleased="#txtSalaryCheckOnAction" prefHeight="59.0" prefWidth="236.0">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </JFXTextField>
    </children>
 </AnchorPane>

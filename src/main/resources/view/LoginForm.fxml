@@ -83,11 +83,11 @@
             <Image url="@../assets.images/longhair.png" />
          </image>
       </ImageView>
-      <JFXTextField fx:id="txtUserId" layoutX="164.0" layoutY="287.0" onKeyPressed="#txtUsernmeCheckOnAction" prefHeight="50.0" prefWidth="370.0">
+      <JFXTextField fx:id="txtUserId" layoutX="164.0" layoutY="287.0" onKeyReleased="#txtUsernmeCheckOnAction" prefHeight="50.0" prefWidth="370.0">
          <font>
             <Font size="28.0" />
          </font></JFXTextField>
-      <JFXPasswordField fx:id="txtPassword" layoutX="164.0" layoutY="397.0" onKeyPressed="#txtPwCheckOnAciton" prefHeight="50.0" prefWidth="370.0">
+      <JFXPasswordField fx:id="txtPassword" layoutX="164.0" layoutY="397.0" onKeyReleased="#txtPwCheckOnAciton" prefHeight="50.0" prefWidth="370.0">
          <font>
             <Font size="28.0" />
          </font></JFXPasswordField>

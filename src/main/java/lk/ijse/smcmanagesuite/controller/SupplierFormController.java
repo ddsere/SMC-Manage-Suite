@@ -1,5 +1,6 @@
 package lk.ijse.smcmanagesuite.controller;
 
+import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -11,6 +12,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.smcmanagesuite.model.Customer;
@@ -18,6 +20,8 @@ import lk.ijse.smcmanagesuite.model.Supplier;
 import lk.ijse.smcmanagesuite.model.tm.SupplierTm;
 import lk.ijse.smcmanagesuite.repository.CustomerRepo;
 import lk.ijse.smcmanagesuite.repository.SupplierRepo;
+import lk.ijse.smcmanagesuite.util.Regex;
+import lk.ijse.smcmanagesuite.util.TextFields;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -42,13 +46,13 @@ public class SupplierFormController {
     private TableView<SupplierTm> tblSupplier;
 
     @FXML
-    private TextField txtId;
+    private JFXTextField txtId;
 
     @FXML
-    private TextField txtName;
+    private JFXTextField txtName;
 
     @FXML
-    private TextField txtTel;
+    private JFXTextField txtTel;
 
     private List<Supplier> supplierList = new ArrayList<>();
 
@@ -77,8 +81,6 @@ public class SupplierFormController {
             tmList.add(supplierTm);
         }
         tblSupplier.setItems(tmList);
-        SupplierTm selectedItem = (SupplierTm) tblSupplier.getSelectionModel().getSelectedItem();
-        //System.out.println("selectedItem = " + selectedItem);
     }
 
     private List<Supplier> getAllSuppliers() {
@@ -89,16 +91,6 @@ public class SupplierFormController {
             throw new RuntimeException(e);
         }
         return supplierList;
-    }
-
-    @FXML
-    void btnBackOnAction(ActionEvent event) throws IOException {
-        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/view/DashboardForm.fxml"));
-        Stage stage = (Stage) root.getScene().getWindow();
-
-        stage.setScene(new Scene(anchorPane));
-        stage.setTitle("Dashboard Form");
-        stage.centerOnScreen();
     }
 
     private void clearFields() {
@@ -130,40 +122,44 @@ public class SupplierFormController {
 
     @FXML
     void btnSaveOnAction(ActionEvent event) {
-        String id = txtId.getText();
-        String name = txtName.getText();
-        String tel = txtTel.getText();
+        if (isValid()) {
+            String id = txtId.getText();
+            String name = txtName.getText();
+            String tel = txtTel.getText();
 
-        Supplier supplier = new Supplier(id, name, tel);
+            Supplier supplier = new Supplier(id, name, tel);
 
-        try {
-            boolean isSaved = SupplierRepo.save(supplier);
-            if (isSaved) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Supplier Saved!").show();
+            try {
+                boolean isSaved = SupplierRepo.save(supplier);
+                if (isSaved) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Supplier Saved!").show();
+                }
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            initialize();
         }
-        initialize();
     }
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
-        String id = txtId.getText();
-        String name = txtName.getText();
-        String tel = txtTel.getText();
+        if (isValid()) {
+            String id = txtId.getText();
+            String name = txtName.getText();
+            String tel = txtTel.getText();
 
-        Supplier supplier = new Supplier(id, name, tel);
+            Supplier supplier = new Supplier(id, name, tel);
 
-        try {
-            boolean isUpdated = SupplierRepo.update(supplier);
-            if (isUpdated) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Supplier Updated!").show();
+            try {
+                boolean isUpdated = SupplierRepo.update(supplier);
+                if (isUpdated) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Supplier Updated!").show();
+                }
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            initialize();
         }
-        initialize();
     }
 
     @FXML
@@ -183,4 +179,22 @@ public class SupplierFormController {
         }
     }
 
+    public boolean isValid(){
+        if (!Regex.setTextColor(TextFields.EID,txtId)) return false;
+        if (!Regex.setTextColor(TextFields.NAME,txtName)) return false;
+        if (!Regex.setTextColor(TextFields.NAME,txtTel)) return false;
+        return true;
+    }
+
+    public void txtIdCheckOnAction(KeyEvent keyEvent) {
+        Regex.setTextColor(TextFields.EID,txtId);
+    }
+
+    public void txtNameCheckOnAction(KeyEvent keyEvent) {
+        Regex.setTextColor(TextFields.NAME,txtName);
+    }
+
+    public void txtTelCheckOnAction(KeyEvent keyEvent) {
+        Regex.setTextColor(TextFields.PHONE,txtTel);
+    }
 }

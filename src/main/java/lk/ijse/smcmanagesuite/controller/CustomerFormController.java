@@ -1,5 +1,6 @@
 package lk.ijse.smcmanagesuite.controller;
 
+import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -11,11 +12,14 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.smcmanagesuite.model.Customer;
 import lk.ijse.smcmanagesuite.model.tm.CustomerTm;
 import lk.ijse.smcmanagesuite.repository.CustomerRepo;
+import lk.ijse.smcmanagesuite.util.Regex;
+import lk.ijse.smcmanagesuite.util.TextFields;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -40,13 +44,13 @@ public class CustomerFormController {
     private TableView<CustomerTm> tblCustomer;
 
     @FXML
-    private TextField txtAddress;
+    private JFXTextField txtAddress;
 
     @FXML
-    private TextField txtName;
+    private JFXTextField txtName;
 
     @FXML
-    private TextField txtTel;
+    private JFXTextField txtTel;
 
     private List<Customer> customerList = new ArrayList<>();
 
@@ -118,40 +122,44 @@ public class CustomerFormController {
 
     @FXML
     void btnSaveOnAction(ActionEvent event) {
-        String name = txtName.getText();
-        String address = txtAddress.getText();
-        String tel = txtTel.getText();
+        if (isValid()) {
+            String name = txtName.getText();
+            String address = txtAddress.getText();
+            String tel = txtTel.getText();
 
-        Customer customer = new Customer(name, address, tel);
+            Customer customer = new Customer(name, address, tel);
 
-        try {
-            boolean isSaved = CustomerRepo.save(customer);
-            if (isSaved) {
-                new Alert(Alert.AlertType.CONFIRMATION, "customer saved!").show();
+            try {
+                boolean isSaved = CustomerRepo.save(customer);
+                if (isSaved) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "customer saved!").show();
+                }
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            initialize();
         }
-        initialize();
     }
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
-        String name = txtName.getText();
-        String address = txtAddress.getText();
-        String tel = txtTel.getText();
+        if (isValid()) {
+            String name = txtName.getText();
+            String address = txtAddress.getText();
+            String tel = txtTel.getText();
 
-        Customer customer = new Customer(name, address, tel);
+            Customer customer = new Customer(name, address, tel);
 
-        try {
-            boolean isUpdated = CustomerRepo.update(customer);
-            if (isUpdated) {
-                new Alert(Alert.AlertType.CONFIRMATION, "customer updated!").show();
+            try {
+                boolean isUpdated = CustomerRepo.update(customer);
+                if (isUpdated) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "customer updated!").show();
+                }
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            initialize();
         }
-        initialize();
     }
 
     @FXML
@@ -171,4 +179,22 @@ public class CustomerFormController {
         }
     }
 
+    public boolean isValid(){
+        if (!Regex.setTextColor(TextFields.NAME,txtName)) return false;
+        if (!Regex.setTextColor(TextFields.NAME,txtAddress)) return false;
+        if (!Regex.setTextColor(TextFields.PHONE,txtTel)) return false;
+        return true;
+    }
+
+    public void txtCusNameCheckOnAciton(KeyEvent keyEvent) {
+        Regex.setTextColor(TextFields.NAME,txtName);
+    }
+
+    public void txtCusAddressCheckOnAciton(KeyEvent keyEvent) {
+        Regex.setTextColor(TextFields.NAME,txtAddress);
+    }
+
+    public void txtCusTelCheckOnAciton(KeyEvent keyEvent) {
+        Regex.setTextColor(TextFields.PHONE,txtTel);
+    }
 }
