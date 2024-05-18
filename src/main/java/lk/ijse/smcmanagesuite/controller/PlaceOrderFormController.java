@@ -10,10 +10,16 @@ import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.smcmanagesuite.db.DbConnection;
 import lk.ijse.smcmanagesuite.model.*;
 import lk.ijse.smcmanagesuite.model.tm.ItemCartTm;
 import lk.ijse.smcmanagesuite.model.tm.ServiceCartTm;
 import lk.ijse.smcmanagesuite.repository.*;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JRDesignQuery;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 import java.sql.Date;
 import java.sql.SQLException;
@@ -289,7 +295,7 @@ public class PlaceOrderFormController {
     }
 
     @FXML
-    void btnPlaceOrderOnAction(ActionEvent event) {
+    void btnPlaceOrderOnAction(ActionEvent event) throws SQLException, JRException {
         String orderId = lblOrderID.getText();
         String cusName = lblCusName.getText();
         Date date = Date.valueOf(LocalDate.now());
@@ -333,6 +339,46 @@ public class PlaceOrderFormController {
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
+
+        JasperDesign jasperDesign =
+                JRXmlLoader.load("src/main/resources/report/CustomerReceipt.jrxml");
+
+        JRDesignQuery jrDesignQuery = new JRDesignQuery();
+        jrDesignQuery.setText("SELECT \n" +
+                "    Orders.Order_Id, \n" +
+                "    Orders.Date AS Order_Date,\n" +
+                "    Item.Description AS Item_Description,\n" +
+                "    Item.Price AS Item_Unit_Price,\n" +
+                "    Service.Name AS Service_Description,\n" +
+                "    Service.Price AS Service_Unit_Price,\n" +
+                "    Orders.Amount,\n" +
+                "    (Orders.Amount) AS Sub_Total\n" +
+                "FROM \n" +
+                "    Orders\n" +
+                "LEFT JOIN Item_orders ON Orders.Order_Id = Item_orders.Order_Id\n" +
+                "LEFT JOIN Item ON Item_orders.Item_Id = Item.Item_Id\n" +
+                "LEFT JOIN Service_orders ON Orders.Order_Id = Service_orders.Order_Id\n" +
+                "LEFT JOIN Service ON Service_orders.S_Id = Service.S_Id\n" +
+                "WHERE \n" +
+                "    Orders.Order_Id = (\n" +
+                "        SELECT Order_Id \n" +
+                "        FROM Orders \n" +
+                "        ORDER BY Order_Id DESC \n" +
+                "        LIMIT 1\n" +
+                "    )");
+
+        jasperDesign.setQuery(jrDesignQuery);
+
+        JasperReport jasperReport =
+                JasperCompileManager.compileReport(jasperDesign);
+
+        JasperPrint jasperPrint =
+                JasperFillManager.fillReport(
+                        jasperReport,
+                        null,
+                        DbConnection.getInstance().getConnection());
+
+        JasperViewer.viewReport(jasperPrint,false);
     }
 
     @FXML
