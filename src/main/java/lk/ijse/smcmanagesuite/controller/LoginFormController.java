@@ -1,5 +1,7 @@
 package lk.ijse.smcmanagesuite.controller;
 
+import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,12 +9,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.scene.input.MouseEvent;
 import lk.ijse.smcmanagesuite.db.DbConnection;
+import lk.ijse.smcmanagesuite.util.Regex;
+import lk.ijse.smcmanagesuite.util.TextFields;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -26,26 +31,23 @@ public class LoginFormController {
     public AnchorPane rootNode;
 
     @FXML
-    public TextField txtPassword;
+    public JFXPasswordField txtPassword;
 
     @FXML
-    public TextField txtUserId;
+    public JFXTextField txtUserId;
 
-
-    @FXML
-    public void linkForgetPasswordOnAction(ActionEvent event) {
-
-    }
 
     @FXML
     public void btnLoginOnAction(ActionEvent event) throws IOException {
-        String userId = txtUserId.getText();
-        String pw = txtPassword.getText();
+        if (isValid()){
+            String userId = txtUserId.getText();
+            String pw = txtPassword.getText();
 
-        try {
-            checkCredential(userId, pw);
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, "Something went wrong!").show();
+            try {
+                checkCredential(userId, pw);
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, "Something went wrong!").show();
+            }
         }
     }
 
@@ -71,14 +73,11 @@ public class LoginFormController {
     }
 
     void navigateToTheDashboard() throws IOException {
-        // Load the dashboard FXML into an AnchorPane object
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/DashboardPanel.fxml"));
         BorderPane dashboardPane = loader.load();
 
-        // Clear the rootNode's children (assuming your main content is there)
         rootNode.getChildren().clear();
 
-        // Add the loaded dashboard pane as the child of rootNode
         rootNode.getChildren().add(dashboardPane);
     }
 
@@ -92,6 +91,23 @@ public class LoginFormController {
 
         stage.setTitle("Registration Form");
         stage.show();
+    }
+
+    public boolean isValid(){
+        if (!Regex.setTextColor(TextFields.UID,txtUserId)) return false;
+        if (!Regex.setTextColor(TextFields.PW,txtPassword)) return false;
+        return true;
+    }
+
+
+    public void txtUsernmeCheckOnAction(KeyEvent keyEvent) {
+        Regex.setTextColor(TextFields.UID,txtUserId);
+
+    }
+
+    public void txtPwCheckOnAciton(KeyEvent keyEvent) {
+        Regex.setTextColor(TextFields.PW,txtPassword);
+
     }
 }
 

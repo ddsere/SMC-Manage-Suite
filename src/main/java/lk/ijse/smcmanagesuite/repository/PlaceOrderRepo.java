@@ -14,13 +14,21 @@ public class PlaceOrderRepo {
 
         try {
             boolean isOrderSaved = OrderRepo.save(po.getOrder());
-            System.out.println("Order "+ isOrderSaved);
+
             if (isOrderSaved) {
-                boolean isItemQtyUpdate = ItemRepo.updateQty(po.getItemQties());
-                System.out.println(isItemQtyUpdate);
-                if (isItemQtyUpdate) {
-                    connection.commit();
-                    return true;
+                boolean isItemDetailsUpdate = ItemDetailRepo.save(po.getItemQties(),po.getOrder());
+
+                if (isItemDetailsUpdate){
+                    boolean isItemQtyUpdate = ItemRepo.updateQty(po.getItemQties());
+
+                    if (isItemQtyUpdate){
+                        boolean isServiceDetailsUpdated =ServiceDetailRepo.save(po.getOrder(),po.getServiceIds());
+
+                    }
+                    if (isItemQtyUpdate) {
+                        connection.commit();
+                        return true;
+                    }
                 }
             }
             connection.rollback();

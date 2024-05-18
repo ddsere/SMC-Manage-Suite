@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -46,14 +46,6 @@
             <Image url="@../assets.images/master-cut.png" />
          </image>
       </ImageView>
-      <TextField fx:id="txtUserId" layoutX="163.0" layoutY="287.0" prefHeight="50.0" prefWidth="370.0" promptText="Enter Username" style="-fx-background-radius: 10;">
-         <font>
-            <Font name="Calibri" size="22.0" />
-         </font></TextField>
-      <TextField fx:id="txtPassword" layoutX="163.0" layoutY="397.0" prefHeight="50.0" prefWidth="370.0" promptText="Enter Password" style="-fx-background-radius: 10;">
-         <font>
-            <Font name="Calibri" size="22.0" />
-         </font></TextField>
       <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="164.0" layoutY="499.0" onAction="#btnLoginOnAction" prefHeight="22.0" prefWidth="370.0" ripplerFill="WHITE" style="-fx-background-color: #030303; -fx-background-radius: 10;" text="Login" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="22.0" />
@@ -77,10 +69,6 @@
             <Font name="System Bold" size="36.0" />
          </font>
       </Label>
-      <Hyperlink layoutX="360.0" layoutY="360.0" onAction="#linkForgetPasswordOnAction" text="Forget Password ?">
-         <font>
-            <Font size="20.0" />
-         </font></Hyperlink>
       <Line endX="41.4000244140625" endY="3.0517578125E-5" layoutX="347.0" layoutY="213.0" startX="-38.5999755859375" startY="3.0517578125E-5" strokeWidth="1.5" />
       <Text accessibleRole="HYPERLINK" fontSmoothingType="LCD" layoutX="267.0" layoutY="620.0" onMouseClicked="#linkRegistrationOnAction" strokeType="OUTSIDE" strokeWidth="0.0" text="Register New User" underline="true">
          <font>
@@ -95,5 +83,13 @@
             <Image url="@../assets.images/longhair.png" />
          </image>
       </ImageView>
+      <JFXTextField fx:id="txtUserId" layoutX="164.0" layoutY="287.0" onKeyPressed="#txtUsernmeCheckOnAction" prefHeight="50.0" prefWidth="370.0">
+         <font>
+            <Font size="28.0" />
+         </font></JFXTextField>
+      <JFXPasswordField fx:id="txtPassword" layoutX="164.0" layoutY="397.0" onKeyPressed="#txtPwCheckOnAciton" prefHeight="50.0" prefWidth="370.0">
+         <font>
+            <Font size="28.0" />
+         </font></JFXPasswordField>
    </children>
 </AnchorPane>

@@ -311,7 +311,17 @@ public class PlaceOrderFormController {
             itemQties.add(od);
         }
 
-        PlaceOrder po = new PlaceOrder(order, itemQties);
+        List<ServiceIds> serviceIds = new ArrayList<>();
+        for (int i = 0; i < tblCartService.getItems().size(); i++) {
+            ServiceCartTm tm = serviceCartList.get(i);
+
+            ServiceIds si = new ServiceIds(
+                    tm.getSId()
+            );
+            serviceIds.add(si);
+        }
+
+        PlaceOrder po = new PlaceOrder(order, itemQties ,serviceIds);
         try {
             boolean isPlaced = PlaceOrderRepo.placeOrder(po);
             System.out.println(isPlaced);
