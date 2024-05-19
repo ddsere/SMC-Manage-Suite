@@ -58,4 +58,18 @@ public class OrderRepo {
         }
         return orderList;
     }
+
+    public static int getOrderCount() throws SQLException {
+        String sql = "SELECT COUNT(*) AS orderCount FROM Orders";
+
+        PreparedStatement pstm = DbConnection.getInstance().getConnection().prepareStatement(sql);
+
+        ResultSet resultSet = pstm.executeQuery();
+
+        int orderCount = 0;
+        if(resultSet.next()) {
+            orderCount = resultSet.getInt("orderCount");
+        }
+        return orderCount;
+    }
 }

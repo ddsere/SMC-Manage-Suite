@@ -100,4 +100,18 @@ public class CustomerRepo {
         }
         return idList;
     }
+
+    public static int getCusCount() throws SQLException {
+        String sql = "SELECT COUNT(*) AS cusCount FROM Customer";
+
+        PreparedStatement pstm = DbConnection.getInstance().getConnection().prepareStatement(sql);
+
+        ResultSet resultSet = pstm.executeQuery();
+
+        int cusCount = 0;
+        if(resultSet.next()) {
+            cusCount = resultSet.getInt("cusCount");
+        }
+        return cusCount;
+    }
 }

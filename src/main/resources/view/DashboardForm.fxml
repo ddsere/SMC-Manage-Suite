@@ -42,7 +42,7 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="79.0" layoutY="555.0" text="0" textFill="#4145b4">
+      <Label fx:id="lblBooking" layoutX="79.0" layoutY="555.0" prefHeight="142.0" prefWidth="162.0" text="0" textFill="#4145b4">
          <font>
             <Font name="System Bold" size="96.0" />
          </font>
@@ -61,7 +61,7 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="417.0" layoutY="555.0" text="0" textFill="#4145b4">
+      <Label fx:id="lblSales" layoutX="417.0" layoutY="555.0" prefHeight="142.0" prefWidth="154.0" text="0" textFill="#4145b4">
          <font>
             <Font name="System Bold" size="96.0" />
          </font>
@@ -80,7 +80,7 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="750.0" layoutY="552.0" text="0" textFill="#4145b4">
+      <Label fx:id="lblCusCount" layoutX="750.0" layoutY="552.0" prefHeight="142.0" prefWidth="154.0" text="0" textFill="#4145b4">
          <font>
             <Font name="System Bold" size="96.0" />
          </font>

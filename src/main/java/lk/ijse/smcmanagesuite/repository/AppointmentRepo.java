@@ -5,7 +5,9 @@ import lk.ijse.smcmanagesuite.db.DbConnection;
 import lk.ijse.smcmanagesuite.model.Appointment;
 import lk.ijse.smcmanagesuite.model.AppointmentStatus;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class AppointmentRepo {
@@ -70,5 +72,19 @@ public class AppointmentRepo {
         pstm.setObject(6, appointment.getPrice());
 
         return pstm.executeUpdate() > 0;
+    }
+
+    public static int getAppCount() throws SQLException {
+        String sql = "SELECT COUNT(*) AS appCount FROM Appointment";
+
+        PreparedStatement pstm = DbConnection.getInstance().getConnection().prepareStatement(sql);
+
+        ResultSet resultSet = pstm.executeQuery();
+
+        int appCount = 0;
+        if(resultSet.next()) {
+            appCount = resultSet.getInt("appCount");
+        }
+        return appCount;
     }
 }
